@@ -6,11 +6,9 @@
 
 {% block content %}
 {{ super() }}
-I am the front!! :)
 {% endblock %}
 
 {% block js %}
 {{ super() }}
-<script type="text/javascript" src="{{ url_for('static', filename='js/firebase/front.js') }}"></script>
 {% endblock %}
 
