@@ -1,10 +1,21 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <title>Bling Musiq</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Social music experience.">
+    <meta name="author" content="Bling Labs">
+
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" rel="stylesheet">
+    {% block css %}
+    {% endblock %}
+
     <script type="text/javascript" src="http://static.firebase.com/v0/firebase.js"></script>
   </head>
   <body>
-    Hello world!
     {% block content %}
     {% endblock %}
 
