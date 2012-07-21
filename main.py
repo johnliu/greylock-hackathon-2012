@@ -18,7 +18,7 @@ def render_base(template='base.html', **kwargs):
 
 @app.route('/')
 def front():
-  return render_base()
+  return render_base(template='front.html')
 
 
 if __name__ == '__main__':
