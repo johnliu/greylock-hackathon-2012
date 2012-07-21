@@ -2,10 +2,37 @@
 
 {% block css %}
 {{ super() }}
+.sidebar-nav-fixed {
+padding: 9px 0;
+position:fixed;
+left:20px;
+top:60px;
+width:250px;
+}
+
+.row-fluid > .span-fixed-sidebar {
+margin-left: 290px;
+}
+
+@media (min-width: 768px) { 
+.sb-fixed{
+position: fixed;
+} 
+}
+
+<div class="span3 sb-fixed">
+  <div class="well sidebar-nav">
+    <!-- Sidebar Contents -->
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
 {{ super() }}
+
+
+
+
 I am in the room! :)
 {% endblock %}
 
