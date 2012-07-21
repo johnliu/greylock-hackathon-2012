@@ -1,0 +1,15 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <script type="text/javascript" src="http://static.firebase.com/v0/firebase.js"></script>
+  </head>
+  <body>
+    Hello world!
+    {% block content %}
+    {% endblock %}
+
+    <script>var db = new Firebase('{{ firebase_url }}');</script>
+    {% block js %}
+    {% endblock %}
+  </body>
+</html>
