@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -14,6 +14,15 @@ def render_base(template='base.html', **kwargs):
 
   merged_args = dict(default_args, **kwargs)
   return render_template(template, **merged_args)
+
+
+def gs_request(method, parameters):
+  # Request the session if it doesn't exist
+  if 'gs_session' not in session:
+    session['gs_session'] = None
+
+  # Get the session id from cookies.
+  g.gs_session = session['gs_session']
 
 
 @app.route('/')

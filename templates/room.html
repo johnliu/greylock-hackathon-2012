@@ -38,5 +38,6 @@ I am in the room! :)
 
 {% block js %}
 {{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/firebase/room.js') }}"></script>
 {% endblock %}
 

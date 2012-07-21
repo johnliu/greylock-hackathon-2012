@@ -19,6 +19,19 @@
     {% block content %}
     {% endblock %}
 
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-transition.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-alert.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-modal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-dropdown.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-scrollspy.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-tab.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-tooltip.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-popover.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-button.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-collapse.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap-typeahead.js') }}"></script>
     <script>var db = new Firebase('{{ firebase_url }}');</script>
     {% block js %}
     {% endblock %}
