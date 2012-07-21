@@ -29,6 +29,10 @@ def gs_request(method, parameters):
 def front():
   return render_base(template='front.html')
 
+@app.route('/room')
+def room():
+  return render_base(template='room.html')
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
