@@ -56,6 +56,20 @@ def start_session():
   return session_id
 
 
+def authenticate(session_id, user, pw):
+  """
+  Authenticates a user session using a MD5 hashed password.
+  """
+  pw_hashed = hmac.new(gs_secret.encode('utf-8'), pw).hexdigest()
+  r = generic_request('authenticate', session=session_id, secure=True,
+                      login=user, password=pw_hashed)
+
+  if 'result' in r and 'sessionID' in r['result']:
+    session_id = r['result']['sessionID']
+
+  return session_id
+
+
 def get_country(session_id):
   """
   Returns a country object based on the request IP.
