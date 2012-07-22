@@ -20,9 +20,16 @@ $(document).ready(function() {
 
   var search_handler = function() {
     var search = $("input#search-box").val();
-    $.post(window.location.pathname, {'search_query': search}, function(data) {
-      //$('.result').html(data);
-      alert(data);
+    $.get('_search', {'search_query': search}, function(data) {
+      var query_set = $.parseJSON(data);
+      $.each(query_set, function(i, obj) {
+        var album_name = obj.AlbumName;
+        var artist_name = obj.ArtistName;
+        var song_name = obj.SongName;
+        console.log('album name: ' + album_name);
+        console.log('artist name: ' + artist_name);
+        console.log('song name: ' + song_name);
+      });
     });
     return false;
   }
