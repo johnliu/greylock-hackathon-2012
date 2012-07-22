@@ -37,7 +37,8 @@
 }
 
 .sidebar-album-cover {
-  margin-top: 10px;
-  width: 100%;
-  text-align: center;
+  height: 50px;
+  width: 50px;
+  float:left;
+  margin-right: 10px;
 }
