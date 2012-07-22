@@ -20,14 +20,23 @@
     <div class="span7 span-fixed-sidebar">
       <div class="span11">
         <h1>You are in room {{ room }}</h1>
+        <form id="login-form" class="well form-inline">
+          <input name="username-input" id="username-input" type="text" class="input-small" placeholder="Email/Username">
+          <input id="password-input" name="password-input"  type="password" class="input-small" placeholder="Password">
+          <label class="checkbox">
+            <input type="checkbox"> Remember me
+          </label>
+          <button type="submit" class="btn">Sign in</button>
+        </form>
         <br>
         <form id="search-form" class="form-search">
           <input id="search-box" type="text" class="input-large search-query span12" placeholder="Search for a song, album, or artist" name="search-box">
         </form>
 
         <ul class="nav nav-pills">
-          <li id="search-result-tab"><a href="#search-result-content" data-toggle="tab">Search Result</a></li>
-          <li id="view-playlist-tab"><a href="#view-playlists-content" data-toggle="tab">View Playlists</a></li>
+          <li id="search-result-tab"><a href="#search-result-content" data-toggle="tab">Search Results</a></li>
+          <li id="view-library-tab"><a href="#view-library-content" data-toggle="tab">Library</a></li>
+          <li id="view-playlist-tab"><a href="#view-playlists-content" data-toggle="tab">Playlists</a></li>
         </ul>
 
         <div class="content-box">
@@ -51,6 +60,20 @@
             <div class="tab-pane" id="view-playlists-content">
               playlist
             </div> <!-- /.playlists -->
+            <div class="tab-pane" id="view-library-content">
+              <h6>User Library</h6>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th class="library-song">Song</th>
+                    <th class="library-artist">Artist</th>
+                    <th class="library-album">Album</th>
+                  </tr>
+                </thead>
+                <tbody id="library-list">
+                </tbody>
+              </table>
+            </div> <!-- /.library -->
           </div> <!-- /.tab-content -->
         </div>
 
@@ -91,6 +114,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/music.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/guest.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/search.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app/auth.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/tooltip.js') }}"></script>
 {% endblock %}
 

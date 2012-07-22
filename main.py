@@ -52,6 +52,40 @@ def json_search():
   return json.dumps(search_result)
 
 
+@app.route('/_authenticate', methods=['GET', 'POST'])
+def json_authenticate():
+  if request.method == 'GET':
+    username = request.args.get('username')
+    password = request.args.get('password')
+    auth_result = ''
+    library_result = ''
+    if 'gs_session' in session:
+      if username and password:
+        auth_result = gs.authenticate(session['gs_session'], username, password)
+        library_result = gs.get_user_library_songs(session['gs_session'])
+      else:
+        auth_result = False
+    else:
+      #User no session.
+      auth_result = False
+
+    return json.dumps(library_result)
+
+
+@app.route('/_library')
+def json_user_library():
+  if 'gs_session' in session:
+    if gs.authenticated_find(session['gs_session']):
+      library_result = gs.get_user_library_songs(session['gs_session'])
+    else:
+      #User not authenticated. Need to authenticate.
+      pass
+  else:
+    #User has no session.
+    pass
+  return json.dumps(library_result)
+
+
 @app.route('/_play')
 def json_play():
   song_id = request.args.get('song_id')
