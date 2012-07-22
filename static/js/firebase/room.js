@@ -22,13 +22,13 @@ $(document).ready(function() {
     var search = $("input#search-box").val();
     $.get('_search', {'search_query': search}, function(data) {
       var query_set = $.parseJSON(data);
+      var song_list = $('#song-list');
       $.each(query_set, function(i, obj) {
-        var album_name = obj.AlbumName;
-        var artist_name = obj.ArtistName;
-        var song_name = obj.SongName;
-        console.log('album name: ' + album_name);
-        console.log('artist name: ' + artist_name);
-        console.log('song name: ' + song_name);
+        var song = $('<tr />');
+        $("<td />", {text: obj.AlbumName}).appendTo(song);
+        $("<td />", {text: obj.ArtistName}).appendTo(song);
+        $("<td />", {text: obj.SongName}).appendTo(song);
+        song.appendTo(song_list);
       });
     });
     return false;
