@@ -3,6 +3,14 @@
  * Session room stylesheet
  *
  */
+
+.radio-button {
+  position: fixed;
+  bottom: 0;
+  left: 455px;
+  z-index: 500;
+}
+
 .export-button {
   position: fixed;
   top:0;
