@@ -4,8 +4,24 @@
  *
  */
 
-body {
 
+.room-name {
+  float: left;
+  margin-right: 20px;
+}
+
+.room-name span {
+  text-transform: uppercase;
+}
+
+.top-area {
+  display; inline;
+}
+
+.top-area .invite-code {
+  position: relative;
+  top: 3px;
+  float: left;
 }
 
 .sidebar-nav-fixed {
@@ -251,4 +267,41 @@ a.accordion-toggle:hover {
 
 .login .accordion-group {
   width: 250px;
+}
+
+#invite-code {
+  display: block;
+}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+  opacity: 0.2;
+  filter: alpha(opacity=80);
+}
+
+.modal.fade.in {
+  top: 70%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.modal {
+  width: 260px;
+  left: 80%;
+}
+
+.modal-header {
+  background-color: #7788D5;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  text-align: center;
+}
+
+.modal-body {
+  text-align: center;
 }
