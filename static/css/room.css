@@ -3,7 +3,7 @@
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  padding-right: 5px;
+  padding-right: 20px;
   position:fixed;
   left:0px;
   top:0px;
@@ -32,5 +32,12 @@
 }
 
 .sidebar-song-artist {
+  padding-left: 5px;
   color: #EAEAEA;
+}
+
+.sidebar-album-cover {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
 }
