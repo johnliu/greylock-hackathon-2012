@@ -109,7 +109,9 @@ $(document).ready(function() {
     if (typeof current_song_data !== 'undefined' && current_song_data != null &&
         typeof current_song_meta !== 'undefined' && current_song_meta != null) {
 
-      
+      if ($('#player').attr('src') == '') {
+        stream_song(current_song_meta.SongID, current_song_meta.AlbumID);
+      }
 
       $('#sidebar-cover-art').attr('src', current_song_data.cover_art_url);
       $('#sidebar-song-title').text(current_song_meta.SongName);
