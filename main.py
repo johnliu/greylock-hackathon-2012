@@ -33,7 +33,6 @@ def front():
 
 @app.route('/<room>', methods=['GET', 'POST'])
 def room(room):
-  import sys
   if request.method == 'POST':
     search_result = ts.search_request(request.form['search_query'])
     result_json = json.dumps(search_result)
