@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{{ super() }}
+<link href="{{ url_for('static', filename='css/room.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<div class="container-fluid">
+
+  <div class="row-fluid row">
+    <div class="span3">
+      <div class="well">
+      {% include 'room_sidebar_control.html' %}
+      {% include 'room_sidebar_queue.html' %}
+      </div><!--/.well -->
+    </div><!--/span-->
+
+    <div class="span7">
+      <div class="span11">
+        <h1>Welcome to room: {{ room }}</h1>
+        <br>
+        <form id="search-form" class="form-search">
+          <input id="search-box" type="text" class="input-large search-query span12" placeholder="Search for a song, album, or artist" name="search-box">
+        </form>
+
+        <ul class="nav nav-pills">
+          <li id="search-result-tab"><a href="#search-result-content" data-toggle="tab">Search Results</a></li>
+        </ul>
+
+        <div id="qrcode"></div>
+
+        <div class="content-box">
+          <div class="tab-content">
+            <div class="tab-pane" id="search-result-content">
+              <h6 class="search-result-text">
+                Search Results Matching: <span></span>
+              </h6>
+              <table class="search-result-table table table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th class="search-result-song">Song</th>
+                    <th class="search-result-artist">Artist</th>
+                    <th class="search-result-album">Album</th>
+                    <th class="search-result-actions"></th>
+                  </tr>
+                </thead>
+                <tbody id="song-list">
+                </tbody>
+              </table>
+            </div> <!-- /.search-result -->
+          </div> <!-- /.tab-content -->
+        </div>
+
+
+      </div><!--/span10 -->
+    </div>
+
+  </div><!--/container row-->
+</div>
+
+
+  <hr> 
+{% endblock %}
+
+{% block js %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/app/guest.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app/search.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app/auth.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app/tooltip.js') }}"></script>
+<script type="text/javascript">
+</script>
+{% endblock %}
+

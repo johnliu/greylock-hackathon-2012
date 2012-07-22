@@ -3,10 +3,12 @@ $(document).ready(function() {
   var songs_db = db.child('rooms').child(room).child('songs');
   var songs_list;
 
-  var search_results;
-
+  var current_song_db = db.child('rooms').child(room).child('current');
   var current_song_data;
+  var current_song_meta;
   var current_song_past_30 = false;
+
+  var search_results;
   
   // Get the audio player.
   var audio_player = document.getElementById('player');
@@ -16,18 +18,23 @@ $(document).ready(function() {
       // Set the current song data.
       current_song_data = data;
       current_song_data['song_id'] = song_id;
+      current_song_db.child('data').set(current_song_data);
       audio_player.src = current_song_data.url;
     });
   }
 
   var next = function() {
     if (songs_list.length > 0) {
-      var current_song_meta = songs_list.shift();
+      current_song_meta = songs_list.shift();
       songs_db.set(songs_list);
+      current_song_db.child('meta').set(current_song_meta);
 
       stream_song(current_song_meta.SongID, current_song_meta.AlbumID);
     } else {
-      // Top 400 thing.
+      current_song_db.child('meta').remove();
+      current_song_db.child('data').remove();
+
+      stream_song('', '');
     }
   }
 
@@ -64,6 +71,29 @@ $(document).ready(function() {
     next();
   });
   
+  current_song_db.on('value', function(snapshot) {
+    // Style current song.
+    var snap = snapshot.val();
+    if (typeof snapshot.val() !== 'undefined' && snapshot.val() != null) {
+      current_song_data = snap.data;
+      current_song_meta = snap.meta;
+    }
+
+    if (typeof current_song_data !== 'undefined' && current_song_data != null &&
+        typeof current_song_meta !== 'undefined' && current_song_meta != null) {
+
+      $('#sidebar-cover-art').attr('src', current_song_data.cover_art_url);
+      $('#sidebar-song-title').text(current_song_meta.SongName);
+      $('#sidebar-song-artist').text(current_song_meta.ArtistName);
+      $('#sidebar-song-album').text(current_song_meta.AlbumName);
+    } else {
+      $('#sidebar-cover-art').attr('src', '/static/img/default_cover_art.png');
+      $('#sidebar-song-title').text('No song playing.');
+      $('#sidebar-song-artist').text('--');
+      $('#sidebar-song-album').text('--');
+    }
+  });
+
   songs_db.on('value', function(snapshot) {
     songs_list = snapshot.val();
     if (typeof songs_list === 'undefined' || songs_list == null) {

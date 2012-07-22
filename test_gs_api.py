@@ -9,11 +9,11 @@ def test():
   #r = gs.get_playlist(sID, '75521778')
   #r = gs.get_autocomplete_search_results(sID, 'Call Me M', limit=5)
   #r = gs.get_song_search_results(sID, 'Call Me Maybe', limit=5)
-  #r = gs.get_album_search_results(sID, 'Greatest Hits', limit=5)
+  r = gs.get_album_search_results(sID, 'Greatest Hits', limit=5)
   #r = gs.get_artist_search_results(sID, 'Jay Chou', limit=5)
   #r = gs.get_popular_songs_month()
   #r = gs.get_playlist_songs(sID, '70757508')
-  r = gs.get_album_art(sID, '90943')
+  #r = gs.get_album_art(sID, '90943')
   print r
   #test_authenticate(sID)
 
