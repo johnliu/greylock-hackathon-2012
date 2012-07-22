@@ -111,6 +111,19 @@ def get_user_playlists(session_id):
     return None
 
 
+def get_playlist_songs(session_id, playlist_id):
+  """
+  Returns the playlist's songs.
+  """
+  r = generic_request('getPlaylistSongs', session=session_id,
+                      playlistID=playlist_id)
+  result = r.get('result')
+  if result:
+    return result.get('songs')
+  else:
+    return None
+
+
 def add_user_favorite_song(session_id, song_id):
   """
   Adds a song to the user's favorites.
