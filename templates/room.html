@@ -18,7 +18,7 @@
     </div><!--/span-->
 
     <div class="span7 span-fixed-sidebar">
-      <div class="span10">
+      <div class="span11">
         <h1>You are in room {{ room }}</h1>
         <br>
         <form id="search-form" class="form-search">
@@ -60,13 +60,25 @@
 
   </div><!--/container row-->
 
-  <div class="name-list">
-    <ul class="unstyled">
-      Guest List
-      <li>test</li>
-      <li>another test</li>
-      <li>test</li>
-    </ul>
+  <div class="guest-list">
+    <div class="accordion" id="guest-accordion">
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#guest-accordion" href="#guest-list">
+            Guest List
+          </a>
+        </div>
+        <div id="guest-list" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <ul class="unstyled">
+              <li>test</li>
+              <li>another test</li>
+              <li>test</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <hr>
