@@ -1,8 +1,14 @@
 $(document).ready(function() { 
-  var room = window.location.pathname;
-
+  
+  console.log('work');
   // push songs to the playlist
-  $('.add-to-queue').click(function() {
+  $('.add-to-queue').on('click', function() {
+    alert('work');
+    console.log(this);
+    var song_info = $(this).parent().parent().children;
+    console.log(this);
+    alert(song_info);
+    return false;
   });
 
   // song search field
