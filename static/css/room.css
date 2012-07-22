@@ -173,5 +173,6 @@ a.accordion-toggle:hover {
   text-decoration: none;
 }
 
-.accordion-inner {
+.accordion-heading{
+  text-align: center;
 }
