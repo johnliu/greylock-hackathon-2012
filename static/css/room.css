@@ -4,8 +4,12 @@
  *
  */
 
+body {
+
+}
 
 .sidebar-nav-fixed {
+  background: url(../img/dinpattern-stripe.gif);
   background-color: #222;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -157,8 +161,42 @@ a.song-link:hover {
   text-align: left;
 }
 
+.search-result-table {
+  margin-top: 10px;
+}
 .search-result-text {
   font-size: 13px;
+}
+
+.search-result-text span {
+  margin-left: 3px;
+  text-transform: none;
+  font-size: 17px;
+  color: #222;
+}
+
+.search-result-song {
+  width: 45%;
+}
+
+.search-result-artist {
+  width: 20%;
+}
+
+.search-result-album {
+  width: 25%;
+}
+
+.search-result-actions {
+  width: 10%;
+}
+
+.search-result-table tbody tr .action-buttons {
+  visibility: hidden;
+}
+
+.search-result-table tbody tr:hover .action-buttons {
+  visibility: visible;
 }
 
 .hide {
@@ -175,6 +213,26 @@ a.song-link:hover {
 
 a.accordion-toggle:hover {
   text-decoration: none;
+}
+
+.accordion-group {
+  background-color: #222;
+  background: url(../img/dinpattern-stripe.gif);
+}
+
+.accordion-body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 400px;
+}
+
+.accordion-inner {
+  background-color: #E4E4E4;
+}
+
+.accordion-inner hr {
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #777;
 }
 
 .accordion-heading{

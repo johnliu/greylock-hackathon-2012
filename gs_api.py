@@ -6,6 +6,23 @@ import requests
 
 gs_secret = os.environ.get('GS_SECRET')
 gs_key = os.environ.get('GS_KEY')
+authenticated = []
+
+def authenticated_find(session_id):
+  """Return first item in sequence where f(item) == True."""
+  for s in authenticated:
+    if s == session_id:
+      return True
+    return False
+
+
+def authenticated_remove(session_id):
+  """Removes a session_id from authenticated list."""
+  if authenticated_find(session_id):
+    authenticated.remove(session_id)
+    return True
+  else:
+    return False
 
 
 def post_request(json_data, secure=False):
@@ -60,12 +77,14 @@ def start_session():
 def authenticate(session_id, user, pw):
   """
   Authenticates a user session using a MD5 hashed password.
+  Adds the session id to the authenticated list.
   """
   pw_hashed = hashlib.md5(pw).hexdigest()
   r = generic_request('authenticate', session=session_id, secure=True,
                       login=user, password=pw_hashed)
 
   if 'result' in r and r['result']['success']:
+    authenticated.append(session_id)
     return True
   else:
     return False
@@ -73,9 +92,10 @@ def authenticate(session_id, user, pw):
 
 def logout(session_id):
   """
-  Logs out current session.
+  Logs out current session and removes it from authenticated list.
   """
   r = generic_request('logout', session=session_id)
+  authenticated_remove(session_id)
   return r.get('result') or ''
 
 
@@ -85,6 +105,26 @@ def get_country(session_id):
   """
   r = generic_request('getCountry', session=session_id)
   return r.get('result') or ''
+
+
+def get_albums_info(session_id, album_ids):
+  """
+  Returns meta data pertaining to the album_ids passed in.
+  """
+  r = generic_request('getAlbumsInfo', session=session_id, albumIDs=album_ids)
+  return r.get('result') or ''
+
+
+def get_album_art(session_id, album_id):
+  """
+  Returns album art URL.
+  """
+  r = get_albums_info(session_id, [album_id])
+  print r
+  if r.get('albums'):
+    return "http://images.grooveshark.com/static/albums/90_" + r['albums'][0]['CoverArtFilename']
+  else:
+    return "http://images.grooveshark.com/static/albums/90_11111.png"
 
 
 def get_user_library_songs(session_id):
