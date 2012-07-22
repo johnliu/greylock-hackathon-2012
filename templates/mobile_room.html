@@ -11,10 +11,26 @@
 
   <div class="row-fluid row">
     <div class="span4">
-      <div class="well">
-      {% include 'room_sidebar_control.html' %}
-      {% include 'room_sidebar_queue.html' %}
-      </div><!--/.well -->
+      <div class="well"><audio id="player" src="" autoplay="true"></audio>
+
+<div class="sidebar-album-cover">
+  <img id="sidebar-cover-art" name="sidebar-cover-art" style="" src="{{ url_for('static', filename='img/default_cover_art.png') }}">
+</div>
+<h4 id="sidebar-song-artist" class="sidebar-song-artist">--</h4>
+<h3 id="sidebar-song-title" class="sidebar-song-title">No song playing.</h3>
+<h5 id="sidebar-song-album" class="sidebar-song-album">--</h5>
+
+
+<div class="top-buttons">
+  <div class="control-buttons">
+    <a id="previous" class="btn btn-primary"><i class="icon-step-backward icon-white"></i></a>
+    <a id="play-pause" class="btn btn-primary"><i class="icon-pause icon-white"></i></a>
+    <a id="next" class="btn btn-primary"><i class="icon-step-forward icon-white"></i></a>
+    <span class="timer">--:--</span>
+  </div>
+</div>
+        <!--{% include 'room_sidebar_queue.html' %}-->
+      </div><!--/well -->
     </div><!--/span-->
 
     <div class="span6">
