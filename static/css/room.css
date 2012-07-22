@@ -168,16 +168,15 @@ a.song-link:hover {
   font-size: 13px;
 }
 
-<<<<<<< HEAD
 .search-result-text span {
   margin-left: 3px;
   text-transform: none;
   font-size: 17px;
   color: #222;
-=======
+}
+
 .hide {
   display: none;
->>>>>>> fa20e1025c066f02ed0aaf7a9e16ce92c97f3753
 }
 
 .guest-list {
