@@ -1,5 +1,7 @@
 import os
+import json
 import gs_api as gs
+import ts_api as ts
 
 from flask import (Flask, render_template, session,
     request, redirect, url_for)
@@ -37,8 +39,13 @@ def front():
   return render_base('front.html')
 
 
-@app.route('/<room>')
+@app.route('/<room>', methods=['GET', 'POST'])
 def room(room):
+  import sys
+  if request.method == 'POST':
+    search_result = ts.search_request(request.form['search_query'])
+    result_json = json.dumps(search_result)
+    return result_json
   return render_base('room.html', room=room)
 
 

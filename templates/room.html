@@ -70,12 +70,11 @@
     </div><!--/span-->
 
     <div class="span9 span-fixed-sidebar">
-      <div class="hero-unit">
-        <h1>You are in room {{ room }}</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div>
-    </div><!--/span9 span-fixed-sidebar -->
+      <h1>You are in room {{ room }}</h1>
+      <form id="search-form" class="well form-search" method="POST">
+        <input id="search-box" type="text" class="input-large search-query span12" placeholder="Search for a song, album, or artist" name="search-box">
+      </form>
+    </div><!--/span12 searchbox-->
 
   </div><!--/container row-->
 
