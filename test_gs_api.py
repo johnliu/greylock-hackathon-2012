@@ -12,13 +12,14 @@ def test():
   #r = gs.get_album_search_results(sID, 'Greatest Hits', limit=5)
   #r = gs.get_artist_search_results(sID, 'Jay Chou', limit=5)
   #r = gs.get_popular_songs_month()
-  r = gs.get_playlist_songs(sID, '70757508')
-  print r
-  #test_authenticate(sID)
+  #r = gs.get_playlist_songs(sID, '70757508')
+  test_authenticate(sID)
 
 def test_authenticate(sID):
   r = gs.authenticate(sID, 'asdfprou', os.environ.get('GS_USER_PW'))
+  print r
   r = gs.get_user_library_songs(sID)
+  print r
   if r:
     print 'got songs'
   else:
@@ -27,7 +28,6 @@ def test_authenticate(sID):
   r = gs.add_user_favorite_song(sID, '33332120')
   r = gs.remove_user_favorite_songs(sID, ['33332120', '33123639'])
   r = gs.get_user_playlists(sID)
-  print r
   r = gs.logout(sID)
 
 if __name__ == '__main__':
