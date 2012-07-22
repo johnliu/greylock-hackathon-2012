@@ -31,6 +31,18 @@ def front():
   return render_base('front.html')
 
 
+@app.route('/m')
+def mobile():
+  return render_base('mobile_front.html')
+
+@app.route('/m/<room>')
+def mobile_room(room):
+  return render_base('mobile_room.html', room=room)
+
+@app.route('/m/_search')
+def mobile_search():
+  json_search()
+
 @app.route('/<room>')
 def room(room):
   return render_base('room.html', room=room)
