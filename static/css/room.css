@@ -215,26 +215,30 @@ a.accordion-toggle:hover {
   text-decoration: none;
 }
 
-.accordion-group {
+.guest-list .accordion-group {
   background-color: #222;
   background: url(../img/dinpattern-stripe.gif);
 }
 
-.accordion-body {
+.guest-list .accordion-body {
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 400px;
 }
 
-.accordion-inner {
+.guest-list .accordion-inner {
   background-color: #E4E4E4;
 }
 
-.accordion-inner hr {
+.guest-list .accordion-inner hr {
   border-top: 1px solid #888;
   border-bottom: 1px solid #777;
 }
 
-.accordion-heading{
+.guest-list .accordion-heading{
   text-align: center;
+}
+
+.login .accordion-group {
+  width: 250px;
 }

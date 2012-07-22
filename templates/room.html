@@ -19,6 +19,25 @@
 
     <div class="span7 span-fixed-sidebar">
       <div class="span11">
+
+        <div class="login">
+          <div class="accordion" id="login-accordion">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#login-accordion" href="#login-accordion-content">
+                  <h6>Login</h6>
+                </a>
+              </div>
+              <div id="login-accordion-content" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  login
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <h1>Welcome to room: {{ room }}</h1>
         <form id="login-form" class="well form-inline">
           <input name="username-input" id="username-input" type="text" class="input-small" placeholder="Email/Username">
