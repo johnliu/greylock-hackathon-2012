@@ -46,7 +46,11 @@
                       Call me maybe super long version that overflows
                     </a>
                   </td>
-                  <td class="queue-song-artist">Don't know but this may overflow</td>
+                  <td class="queue-song-artist">
+                    <a href="#" class="song-link" rel="tooltip" title="Dont know but this may overflow">
+                      Dont know but this may overflow
+                    </a>
+                  </td>
                   <td class="queue-song-actions">
                     <div class="action-buttons">
                       <a class="btn btn-mini btn-success">
@@ -69,12 +73,33 @@
       </div><!--/.well -->
     </div><!--/span-->
 
-    <div class="span9 span-fixed-sidebar">
-      <h1>You are in room {{ room }}</h1>
-      <form id="search-form" class="well form-search" method="POST">
-        <input id="search-box" type="text" class="input-large search-query span12" placeholder="Search for a song, album, or artist" name="search-box">
-      </form>
-    </div><!--/span12 searchbox-->
+    <div class="span7 span-fixed-sidebar">
+      <div class="span10">
+        <h1>You are in room {{ room }}</h1>
+        <br>
+        <form id="search-form" class="form-search" method="POST">
+          <input id="search-box" type="text" class="input-large search-query span12" placeholder="Search for a song, album, or artist" name="search-box">
+        </form>
+
+        <ul class="nav nav-pills">
+          <li><a href="#search-result" data-toggle="tab">Search Result</a></li>
+          <li><a href="#playlists" data-toggle="tab">View Playlists</a></li>
+        </ul>
+
+        <div class="content-box">
+          <div class="tab-content">
+            <div class="tab-pane" id="search-result">
+              search result
+            </div> <!-- /.search-result -->
+            <div class="tab-pane" id="playlists">
+              playlist
+            </div> <!-- /.playlists -->
+          </div> <!-- /.tab-content -->
+        </div>
+
+
+      </div><!--/span10 -->
+    </div>
 
   </div><!--/container row-->
 
