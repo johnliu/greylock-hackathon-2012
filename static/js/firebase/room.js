@@ -21,9 +21,15 @@ $(document).ready(function() {
   var search_handler = function() {
     var search = $("input#search-box").val();
     $.get('_search', {'search_query': search}, function(data) {
-      //$('.result').html(data);
       var query_set = $.parseJSON(data);
-      console.log(query_set[0]);
+      var song_list = $('#song-list');
+      $.each(query_set, function(i, obj) {
+        var song = $('<tr />');
+        $("<td />", {text: obj.AlbumName}).appendTo(song);
+        $("<td />", {text: obj.ArtistName}).appendTo(song);
+        $("<td />", {text: obj.SongName}).appendTo(song);
+        song.appendTo(song_list);
+      });
     });
     return false;
   }

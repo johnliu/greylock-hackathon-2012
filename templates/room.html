@@ -83,13 +83,13 @@
         </form>
 
         <ul class="nav nav-pills">
-          <li><a href="#search-result" data-toggle="tab">Search Result</a></li>
-          <li><a href="#playlists" data-toggle="tab">View Playlists</a></li>
+          <li id="search-result-tab"><a href="#search-result-content" data-toggle="tab">Search Result</a></li>
+          <li id="view-playlist-tab"><a href="#view-playlists-content" data-toggle="tab">View Playlists</a></li>
         </ul>
 
         <div class="content-box">
           <div class="tab-content">
-            <div class="tab-pane" id="search-result">
+            <div class="tab-pane" id="search-result-content">
               <h6 class="search-result-text">
                 Search Results Matching: <span>some searches</span>
               </h6>
@@ -101,11 +101,16 @@
                     <th>Album</th>
                   </tr>
                 </thead>
-                <tbody>
-                </body>
+                <tbody id="song-list">
+                  <tr>
+                    <td>Baby, baby, baby!!</td>
+                    <td>Justin Bieber</td>
+                    <td>Album name</td>
+                  </tr>
+                </tbody>
               </table>
             </div> <!-- /.search-result -->
-            <div class="tab-pane" id="playlists">
+            <div class="tab-pane" id="view-playlists-content">
               playlist
             </div> <!-- /.playlists -->
           </div> <!-- /.tab-content -->
