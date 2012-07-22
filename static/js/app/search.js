@@ -129,6 +129,7 @@ $(document).ready(function() {
         }
       } else {
         $('#play-pause').find('i').removeClass('icon-pause').addClass('icon-play');
+
         if (!audio_player.paused) {
           audio_player.pause();
         }
