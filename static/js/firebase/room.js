@@ -1,19 +1,33 @@
-// add new guest for each page landing
+$(document).ready(function() { 
+  // create guest
+  var room = window.location.pathname.split('/')[1];
+  var guests = ['guest_' + Math.round(Math.random() * 1000)];
+  db.child('rooms').child(room).child('guests').set(guests);
 
-$(document).ready(function() {
+  db.child('rooms').child(room).on('child_added', function(snapshot) {
+    //if (snapshot.val().guests === null) guests = [];
+    //else guests = new Array(snapshot.val().guests);
+    console.log(guests);
+    guests.concat(snapshot.val().guests);
+    console.log(guests);
+  });
+
+  guests.push(name);
+  db.child('rooms').child(room).child('guests').set(name);
+
+  // song search field
   var room = window.location.pathname;
-  //db.child('rooms').child(room).child('guests').child(guest_name
 
   var search_handler = function() {
     var search = $("input#search-box").val();
-    $.post(window.location.pathname, {'search_query': search}, function(data) {
+    $.get('_search', {'search_query': search}, function(data) {
       //$('.result').html(data);
-      alert(data);
+      var query_set = $.parseJSON(data);
+      console.log(data[0]);
     });
     return false;
   }
 
   $('#search-form').submit(search_handler);
-
 })
 
