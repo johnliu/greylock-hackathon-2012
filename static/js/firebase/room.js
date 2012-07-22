@@ -19,12 +19,17 @@ $(document).ready(function() {
   var room = window.location.pathname;
 
   var search_handler = function() {
-    alert('hi');
     var search = $("input#search-box").val();
     $.get('_search', {'search_query': search}, function(data) {
-      //$('.result').html(data);
       var query_set = $.parseJSON(data);
-      console.log(query_set[0]);
+      $.each(query_set, function(i, obj) {
+        var album_name = obj.AlbumName;
+        var artist_name = obj.ArtistName;
+        var song_name = obj.SongName;
+        console.log('album name: ' + album_name);
+        console.log('artist name: ' + artist_name);
+        console.log('song name: ' + song_name);
+      });
     });
     return false;
   }
