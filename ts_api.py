@@ -21,13 +21,3 @@ def search_request(query, limit=5):
   return requests.post(url + query + '?format=json&limit=' + str(limit)
                        + '&key=' + gs_tinysong).json
 
-  # Uncomment if you want to return the list as a python dict instead.
-  # songs = []
-  # for song in result:
-  #   songs.append({'song_id': song['SongID'],
-  #                 'song_name': song['SongName'],
-  #                 'artist_id': song['ArtistID'],
-  #                 'artist_name': song['ArtistName'],
-  #                 'album_id': song['AlbumID'],
-  #                 'album_name': song['AlbumName']})
-  # return songs

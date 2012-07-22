@@ -1,5 +1,6 @@
 import os
 import gs_api as gs
+import ts_api as ts
 
 from flask import Flask, render_template, session
 
@@ -17,15 +18,6 @@ def render_base(template='base.html', **kwargs):
   return render_template(template, **merged_args)
 
 
-def gs_request(method, parameters):
-  # Request the session if it doesn't exist
-  if 'gs_session' not in session:
-    session['gs_session'] = None
-
-  # Get the session id from cookies.
-  g.gs_session = session['gs_session']
-
-
 @app.route('/')
 def front():
   return render_base(template='front.html')
@@ -38,10 +30,9 @@ def room():
 
 @app.route('/play')
 def play():
-  """
-  Test method.
-  """
-  return render_base()
+  gs_session = gs.start_session()
+  gs_stream = gs.get_stream_key_stream_server(gs_session, 33123639)
+  return render_base(template='play.html', data=gs_stream['url'])
 
 
 if __name__ == '__main__':
