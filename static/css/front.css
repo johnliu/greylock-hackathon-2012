@@ -1,7 +1,24 @@
+/*
+ *
+ * Landing page stylesheet
+ *
+ */
+
+
 #name-form {
   position: absolute;
-  top: 50%;
-  height: 240px;
-  margin-top: -120px;
+  top: 35%;
+  left: 45%;
+  width: 260px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -130px;
+  /* margins are half of width/height */
+  padding: 60px;
+  padding-bottom: 90px;
 }
+
+  #name-form label {
+    margin-bottom: 30px;
+  }
 

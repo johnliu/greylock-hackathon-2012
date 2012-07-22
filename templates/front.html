@@ -7,13 +7,11 @@
 
 {% block content %}
 {{ super() }}
-<div id="name-form">
-<form class="well">
-  <label>Room Name</label>
+<form id="name-form" class="well">
+  <label><h1>Room Name</h1></label>
   <input type="text" class="span3" placeholder="Coolest room evars."><br>
-  <button type="submit" class="btn btn-primary">Join</button>
+  <button type="submit" class="btn btn-large btn-primary">Join</button>
 </form>
-</div>
 {% endblock %}
 
 {% block js %}
