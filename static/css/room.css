@@ -111,6 +111,23 @@ a.song-link:hover {
 }
 
 .queue .table tbody tr:hover td, .queue .table tbody tr:hover th {
-  background-color:#444;
+  background-color:#162281;
 }
 
+.tooptip {
+  font-size: 11px;
+}
+
+.tooltip.in {
+  opacity: 0.95;
+}
+
+.tooltip .tooltip-inner {
+  background-color: #131C62;
+  border: 2px solid black;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  font-weight: bold;
+  text-align: left;
+}
