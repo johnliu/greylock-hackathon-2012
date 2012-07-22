@@ -9,9 +9,13 @@ $(document).ready(function() {
   var post_load = setInterval(function() {
     if (typeof guests_list !== 'undefined' && guests_list != null) {
       // Add the user as a guest to the room.
-      guests_list.push('Guest ' + Math.round(Math.random() * 1000));
-      guests_db.set(guests_list);
+      if ($.cookie('id') == null) {
+        guests_list.push('Guest ' + Math.round(Math.random() * 1000));
+        $.cookie('id', guests_list.length - 1);
+        guests_db.set(guests_list);
+      }
       clearInterval(post_load);
+    } else {
     }
   }, 1000);
   
@@ -21,6 +25,7 @@ $(document).ready(function() {
       guests_list = [];
     }
 
+    $('#guest-list').empty();
     // Loop through the entire list and put out the guest list.
     $.each(guests_list, function(i, element) {
       $('#guest-list').append('<li>' + element + '</li>');

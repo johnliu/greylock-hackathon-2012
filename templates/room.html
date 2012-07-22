@@ -85,7 +85,7 @@
               playlist
             </div> <!-- /.playlists -->
             <div class="tab-pane" id="view-library-content">
-              <h4>Jonathan's Library</h4>
+              <h4>User Library</h4>
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -177,6 +177,8 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/search.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/auth.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/tooltip.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app/queue_export.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app/jQuery.download.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   var href_room = 'http://rawkcy.local:5000/m' + window.location.pathname;

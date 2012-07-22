@@ -4,7 +4,7 @@ import gs_api as gs
 import ts_api as ts
 
 from flask import (Flask, render_template, session,
-    request, redirect, url_for)
+    request, redirect, url_for, make_response)
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -60,6 +60,17 @@ def play():
   gs_stream = gs.get_stream_key_stream_server(gs_session, 33123639)
   return render_base(template='play.html', data=gs_stream['url'])
 
+@app.route('/_queue_list', methods=['GET', 'POST'])
+def queue_list():
+  if request.method == 'POST':
+    filename = 'test'
+    server_path = 'http://gamma.firebase.com/bling/rooms/helo.json'
+    response = make_response()
+    response.headers['Content-Type'] = 'application/'
+    response.headers['Content-Disposition'] = 'attachment; filename=%s' % filename
+    response.headers['X-Accel-Redirect'] = server_path
+    import sys; print >> sys.stderr, response
+    return response
 
 @app.route('/_search')
 def json_search(search_query=''):
