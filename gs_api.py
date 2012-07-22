@@ -111,6 +111,20 @@ def get_stream_key_stream_server(session_id, song_id):
           'duration' : duration}
 
 
+def get_popular_songs_month(limit=10):
+  """
+  Returns a set of popular songs of the month so that we can populate the
+  play queue even when there are no songs in it.
+
+  Each new session should start by calling this and storing it.
+
+  There is a bug with the Grooveshark API currently which causes the
+  response to give the full list of songs even if you pass in a limit param.
+  """
+  r = generic_request('getPopularSongsMonth', limit=limit)
+  return r.get('result') or ''
+
+
 def get_playlist(session_id, playlist_id):
   """
   Returns a playlist object.
