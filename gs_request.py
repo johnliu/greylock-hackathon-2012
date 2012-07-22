@@ -62,3 +62,21 @@ def get_country(session_id):
   """
   r = generic_request('getCountry', session=session_id)
   return r.get('result') or ''
+
+
+# Returns python dict with <url, StreamServerID, StreamKey, duration>
+def get_stream_key_stream_server(session_id, song_id):
+  country = get_country(session_id)
+
+  result = generic_request('getStreamKeyStreamServer', session=session_id,
+      songID=song_id, country=country).get('result')
+  if (result):
+    url = result.get('url')
+    stream_key = result.get('StreamKey')
+    stream_server_id = result.get('StreamServerID')
+    duration = result.get('uSecs')
+
+  return {'url': url,
+          'stream_key': stream_key,
+          'stream_server_id': stream_server_id,
+          'duration' : duration}
