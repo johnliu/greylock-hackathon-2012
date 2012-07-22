@@ -21,6 +21,7 @@ $(document).ready(function() {
       guests_list = [];
     }
 
+    $('#guest-list').empty();
     // Loop through the entire list and put out the guest list.
     $.each(guests_list, function(i, element) {
       $('#guest-list').append('<li>' + element + '</li>');

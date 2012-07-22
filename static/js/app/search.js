@@ -6,6 +6,8 @@ $(document).ready(function() {
   var current_song_db = db.child('rooms').child(room).child('current');
   var current_song_data;
   var current_song_meta;
+  var current_song_timer;
+  var current_song_status;
   var current_song_past_30 = false;
 
   var search_results;
@@ -31,10 +33,9 @@ $(document).ready(function() {
 
       stream_song(current_song_meta.SongID, current_song_meta.AlbumID);
     } else {
+      audio_player.src = '';
       current_song_db.child('meta').remove();
       current_song_db.child('data').remove();
-
-      stream_song('', '');
     }
   }
 
@@ -61,6 +62,20 @@ $(document).ready(function() {
       current_song_past_30 = true;
       $.post('/_over_30', current_song_data);
     }
+
+    // Update the timer.
+    current_song_timer =  current_song_data.duration/1000000 - audio_player.currentTime;
+    current_song_db.child('timer').set(current_song_timer)
+  });
+
+  audio_player.addEventListener('play', function() {
+    current_song_status = 'play';
+    current_song_db.child('status').set(current_song_status);
+  });
+
+  audio_player.addEventListener('pause', function() {
+    current_song_status = 'pause';
+    current_song_db.child('status').set(current_song_status);
   });
 
   $('#play-pause').click(function() {
@@ -77,6 +92,8 @@ $(document).ready(function() {
     if (typeof snapshot.val() !== 'undefined' && snapshot.val() != null) {
       current_song_data = snap.data;
       current_song_meta = snap.meta;
+      current_song_timer = snap.timer;
+      current_song_status = snap.status;
     }
 
     if (typeof current_song_data !== 'undefined' && current_song_data != null &&
@@ -86,11 +103,24 @@ $(document).ready(function() {
       $('#sidebar-song-title').text(current_song_meta.SongName);
       $('#sidebar-song-artist').text(current_song_meta.ArtistName);
       $('#sidebar-song-album').text(current_song_meta.AlbumName);
+
+      var mins = Math.floor(current_song_timer / 60);
+      var secs = Math.floor(current_song_timer % 60);
+      var secs_string = (secs < 10 ? '0' : '') + secs;
+      $('.timer').text(mins + ':' + secs_string);
+
+      if (current_song_status == 'play') {
+        $('#play-pause').find('i').removeClass('icon-play').addClass('icon-pause');
+      } else {
+        $('#play-pause').find('i').removeClass('icon-pause').addClass('icon-play');
+      }
+
     } else {
       $('#sidebar-cover-art').attr('src', '/static/img/default_cover_art.png');
       $('#sidebar-song-title').text('No song playing.');
       $('#sidebar-song-artist').text('--');
       $('#sidebar-song-album').text('--');
+      $('.timer').text('--:--');
     }
   });
 
@@ -105,27 +135,27 @@ $(document).ready(function() {
     
     $.each(songs_list, function(element_id, element) {
       var inserted_element = '\
-      <tr>\
-      <td class="queue-song-name">\
-      <a href="#" class="song-link" rel="tooltip" title="' +
-      element.SongName + '">' + element.SongName + '</a>\
-      </td>\
-      <td class="queue-song-artist">\
-      <a href="#" class="song-link" rel="tooltip" title="' +
-      element.ArtistName + '">' + element.ArtistName + '</a>\
-      </td>\
-      <td class="queue-song-actions"><div class="action-buttons">\
-      <a class="btn btn-mini btn-success">\
-      <i class="icon-thumbs-up icon-white"></i>\
-      </a>\
-      <a class="btn btn-mini btn-danger">\
-      <i class="icon-thumbs-down icon-white"></i>\
-      </a>\
-      <a class="btn btn-mini btn-warning">\
-      <i class="icon-star icon-white"></i>\
-      </a>\
-      </td>\
-      </tr>'
+          <tr>\
+            <td class="queue-song-name">\
+              <a href="#" class="song-link" rel="tooltip" title="' +
+                element.SongName + '">' + element.SongName + '</a>\
+            </td>\
+            <td class="queue-song-artist">\
+              <a href="#" class="song-link" rel="tooltip" title="' +
+              element.ArtistName + '">' + element.ArtistName + '</a>\
+            </td>\
+            <td class="queue-song-actions"><div class="action-buttons">\
+              <a class="btn btn-mini btn-success">\
+                <i class="icon-thumbs-up icon-white"></i>\
+              </a>\
+              <a class="btn btn-mini btn-danger">\
+                <i class="icon-thumbs-down icon-white"></i>\
+              </a>\
+              <a class="btn btn-mini btn-warning">\
+                <i class="icon-star icon-white"></i>\
+              </a>\
+            </td>\
+          </tr>'
 
       queue_table.append(inserted_element);
 

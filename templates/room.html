@@ -30,7 +30,7 @@
               </div>
               <div id="login-accordion-content" class="accordion-body collapse">
                 <div class="accordion-inner">
-                  <form id="login-form" class="well form-inline">
+                  <form id="login-form" class="form-inline">
                     <input name="username-input" id="username-input" type="text" class="input-small" placeholder="Email/Username">
                     <input id="password-input" name="password-input"  type="password" class="input-small" placeholder="Password">
                     <label class="checkbox">
@@ -45,14 +45,15 @@
         </div>
 
 
-        <div class="top-area">
-          <h2 class="room-name">Welcome to room: <span>{{ room }}</span></h2>
-          <a data-toggle="modal" href="#invite-code" class="btn btn-primary invite-code">Invite</a>
-        </div>
-        <br>
-        <form id="search-form" class="form-search">
-          <input id="search-box" type="text" class="input-large search-query span12" placeholder="Search for a song, album, or artist" name="search-box">
-        </form>
+        <div class="well">
+          <div class="top-area">
+            <h2 class="room-name">Welcome to room: <span>{{ room }}</span></h2>
+            <a data-toggle="modal" href="#invite-code" class="btn btn-primary invite-code">Invite</a>
+          </div>
+          <form id="search-form" class="form-search">
+            <input id="search-box" type="text" class="input-large search-query span12" placeholder="Search for a song, album, or artist" name="search-box">
+          </form>
+        </div> <!-- /.well -->
 
         <ul class="nav nav-pills">
           <li id="search-result-tab"><a href="#search-result-content" data-toggle="tab">Search Results</a></li>
@@ -84,7 +85,7 @@
               playlist
             </div> <!-- /.playlists -->
             <div class="tab-pane" id="view-library-content">
-              <h4>Jonathan's Library</h4>
+              <h4>User Library</h4>
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -116,6 +117,29 @@
         </div>
         <div id="guest-list-accordion" class="accordion-body collapse">
           <div class="accordion-inner">
+            <ul class="unstyled" id="">
+              <li>
+                <a href="http://facebook.com/jonathancy.ng" target="_blank">
+                  Jonathan Ng
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/tmchng" target="_blank">
+                  Tim Cheng
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/rawkcy" target="_blank">
+                  Roxanne Guo
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/johnyuhanliu" target="_blank">
+                  John Liu
+                </a>
+              </li>
+
+            </ul>
             <ul class="unstyled" id="guest-list">
             </ul>
             <hr>
