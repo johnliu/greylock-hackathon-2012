@@ -266,7 +266,11 @@ a.accordion-toggle:hover {
 }
 
 .login .accordion-group {
-  width: 250px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 200px;
+  z-index: 1000;
 }
 
 #invite-code {
