@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<audio id='player' src="" controls>Not supported</audio>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/firebase/play.js') }}"></script>
+{% endblock %}

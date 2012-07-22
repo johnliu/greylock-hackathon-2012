@@ -1,5 +1,7 @@
 import os
+import json
 import gs_api as gs
+import ts_api as ts
 
 from flask import (Flask, render_template, session,
     request, redirect, url_for)
@@ -18,36 +20,40 @@ def render_base(template='base.html', **kwargs):
   return render_template(template, **merged_args)
 
 
-def gs_request(method, parameters):
-  # Request the session if it doesn't exist
-  if 'gs_session' not in session:
-    session['gs_session'] = None
-
-  # Get the session id from cookies.
-  g.gs_session = session['gs_session']
-
-
 @app.route('/', methods=['GET', 'POST'])
 def front():
   if request.method == 'POST':
-    #TODO(johnliu): create Grooveshark session ID
+    # Create the Grooveshark session for the room.
+    session['gs_session'] = gs.start_session()
 
     room = request.form['name'].replace(' ', '_')
     return redirect(url_for('room', room=room))
   return render_base('front.html')
 
 
-@app.route('/<room>')
+@app.route('/<room>', methods=['GET', 'POST'])
 def room(room):
+  if request.method == 'POST':
+    search_result = ts.search_request(request.form['search_query'])
+    result_json = json.dumps(search_result)
+    return result_json
   return render_base('room.html', room=room)
 
 
 @app.route('/play')
 def play():
-  """
-  Test method.
-  """
-  return render_base()
+  gs_session = gs.start_session()
+  gs_stream = gs.get_stream_key_stream_server(gs_session, 33123639)
+  return render_base(template='play.html', data=gs_stream['url'])
+
+
+@app.route('/_play', methods=['GET'])
+def json_play():
+  song_id = request.args.get('song_id')
+  if 'gs_session' in session and song_id:
+    song_data = gs.get_stream_key_stream_server(session['gs_session'], song_id)
+    return json.dumps(song_data)
+  return json.dumps('')
 
 
 if __name__ == '__main__':
