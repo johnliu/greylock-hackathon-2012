@@ -30,8 +30,10 @@ def gs_request(method, parameters):
 @app.route('/', methods=['GET', 'POST'])
 def front():
   if request.method == 'POST':
-    # create Grooveshark session ID
-    return redirect(url_for('room', room=request.form['name']))
+    #TODO(johnliu): create Grooveshark session ID
+
+    room = request.form['name'].replace(' ', '_')
+    return redirect(url_for('room', room=room))
   return render_base('front.html')
 
 
