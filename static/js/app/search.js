@@ -16,6 +16,10 @@ $(document).ready(function() {
   var audio_player = document.getElementById('player');
 
   var stream_song = function(song_id, album_id) {
+    if ($.cookie('id') != 0) {
+      return;
+    }
+
     $.getJSON('/_play', {'song_id': song_id, 'album_id': album_id}, function(data) {
       // Set the current song data.
       current_song_data = data;
@@ -79,7 +83,13 @@ $(document).ready(function() {
   });
 
   $('#play-pause').click(function() {
-    play_pause();
+    if (current_song_status == 'play') {
+      current_song_status = 'pause'
+      current_song_db.child('status').set(current_song_status);
+    } else {
+      current_song_status = 'play'
+      current_song_db.child('status').set(current_song_status);
+    }
   });
 
   $('#next').click(function() {
@@ -99,6 +109,8 @@ $(document).ready(function() {
     if (typeof current_song_data !== 'undefined' && current_song_data != null &&
         typeof current_song_meta !== 'undefined' && current_song_meta != null) {
 
+      
+
       $('#sidebar-cover-art').attr('src', current_song_data.cover_art_url);
       $('#sidebar-song-title').text(current_song_meta.SongName);
       $('#sidebar-song-artist').text(current_song_meta.ArtistName);
@@ -111,8 +123,15 @@ $(document).ready(function() {
 
       if (current_song_status == 'play') {
         $('#play-pause').find('i').removeClass('icon-play').addClass('icon-pause');
+        
+        if (audio_player.paused) {
+          audio_player.play();
+        }
       } else {
         $('#play-pause').find('i').removeClass('icon-pause').addClass('icon-play');
+        if (!audio_player.paused) {
+          audio_player.pause();
+        }
       }
 
     } else {
