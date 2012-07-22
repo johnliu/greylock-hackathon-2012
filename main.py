@@ -31,13 +31,8 @@ def front():
   return render_base('front.html')
 
 
-@app.route('/<room>', methods=['GET', 'POST'])
+@app.route('/<room>')
 def room(room):
-  import sys
-  if request.method == 'POST':
-    search_result = ts.search_request(request.form['search_query'])
-    result_json = json.dumps(search_result)
-    return result_json
   return render_base('room.html', room=room)
 
 
@@ -48,13 +43,32 @@ def play():
   return render_base(template='play.html', data=gs_stream['url'])
 
 
-@app.route('/_play', methods=['GET'])
+@app.route('/_search')
+def json_search():
+  search_query = request.args.get('search_query')
+  search_result = '';
+  if search_query:
+    search_result = ts.search_request(search_query)
+  return json.dumps(search_result)
+
+
+@app.route('/_play')
 def json_play():
   song_id = request.args.get('song_id')
+  song_data = ''
   if 'gs_session' in session and song_id:
     song_data = gs.get_stream_key_stream_server(session['gs_session'], song_id)
-    return json.dumps(song_data)
-  return json.dumps('')
+  return json.dumps(song_data)
+
+
+@app.route('/_complete')
+def json_complete():
+  pass
+
+
+@app.route('/_over_30')
+def json_over_30():
+  pass
 
 
 if __name__ == '__main__':

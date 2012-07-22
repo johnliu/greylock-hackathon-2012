@@ -1,25 +1,25 @@
 var i = 0;
-//var song_list = [24925833, 33123639];
-var song_list = [
-  '/static/test/02.mp3',
-  '/static/test/04.mp3',
-  '/static/test/03.mp3',
-  '/static/test/01.mp3',
-  '/static/test/05.mp3'
-];
+var song_list = [24925833, 33123639];
+//var song_list = [
+  //'/static/test/02.mp3',
+  //'/static/test/04.mp3',
+  //'/static/test/03.mp3',
+  //'/static/test/01.mp3',
+  //'/static/test/05.mp3'
+//];
 
 
 $(document).ready(function() {
   var song_data;
 
   var play_song = function(song_id) {
-    //$.getJSON('/_play', {'song_id': song_id}, function(data) {
-      //song_data = data;
+    $.getJSON('/_play', {'song_id': song_id}, function(data) {
+      song_data = data;
 
       var audioPlayer = document.getElementById('player');
-      audioPlayer.src = song_id;//song_data.url;
+      audioPlayer.src = song_data.url;
       console.log('playing ' + song_id);
-    //});
+    });
   }
 
   var audioPlayer = document.getElementById('player');
