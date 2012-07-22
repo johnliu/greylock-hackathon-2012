@@ -59,8 +59,19 @@
   font-size: 9px;
 }
 
+.queue table {
+  table-layout: fixed;
+  color: #DADADA;
+}
 .queue table tbody tr td {
-  overflow: hidden;
+}
+
+.song-link {
+  color: #DADADA;
+}
+
+a.song-link:hover {
+  color: #DADADA;
 }
 
 .queue-container {
@@ -86,10 +97,20 @@
 }
 
 .queue-song-name {
+  overflow: hidden;
+  white-space: nowrap;
   width: 60%;
+}
+
+.table-condensed td.queue-song-artist {
+  padding-left: 10px;
 }
 
 .queue-song-artist {
   width: 40%;
+}
+
+.queue .table tbody tr:hover td, .queue .table tbody tr:hover th {
+  background-color:#444;
 }
 
