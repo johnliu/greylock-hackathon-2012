@@ -24,6 +24,11 @@
   float: left;
 }
 
+.form-search {
+  position: relative;
+  top: 8px;
+}
+
 .sidebar-nav-fixed {
   background: url(../img/dinpattern-stripe.gif);
   background-color: #222;
@@ -202,7 +207,7 @@ a.song-link:hover {
 }
 
 .search-result-song {
-  width: 45%;
+  width: 42%;
 }
 
 .search-result-artist {
@@ -214,7 +219,7 @@ a.song-link:hover {
 }
 
 .search-result-actions {
-  width: 10%;
+  width: 13%;
 }
 
 .search-result-table tbody tr .action-buttons {
@@ -268,9 +273,35 @@ a.accordion-toggle:hover {
 .login .accordion-group {
   position: absolute;
   top: 0px;
-  right: 0px;
-  width: 200px;
+  right: 10px;
+  width: 130px;
+  border: none;
   z-index: 1000;
+}
+
+.login .accordion-heading {
+  border: none;
+  text-align: center;
+}
+
+.login .accordion-inner {
+  background-color: #E4E4E4;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding-top: 13px;
+  padding-bottom: 1px;
+}
+
+.login h6 {
+  font-weight: normal;
+  text-transform: capitalize;
+  font-size: 15px;
+  color: #08C;
+}
+
+.login a:hover {
+  color: #005580;
 }
 
 #invite-code {
