@@ -161,6 +161,10 @@ a.song-link:hover {
   font-size: 13px;
 }
 
+.hide {
+  display: none;
+}
+
 .guest-list {
   position: fixed;
   bottom: -20px;
