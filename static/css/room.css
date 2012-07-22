@@ -4,6 +4,17 @@
  *
  */
 
+.background {
+  position: fixed;
+  background: url(../img/music.jpg);
+  background-size: 300px auto;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+  top: 30px;
+  right: 20px;
+  z-index: -10;
+}
 
 .room-name {
   float: left;
