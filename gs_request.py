@@ -18,10 +18,10 @@ def post_request(json_data, secure=False):
   signature = hmac.new(gs_secret.encode('utf-8'), json_data).hexdigest()
 
   # Return the json data form the response.
-  return requests.post(url + signature, json_data)
+  return requests.post(url + signature, json_data).json
 
 
-def startSession():
+def start_session():
   json_data = json.dumps({
     'method': 'startSession',
     'header': {
@@ -29,4 +29,10 @@ def startSession():
     }
   })
 
-  return post_request(json_data, secure=True)
+  r = post_request(json_data, secure=True)
+
+  session_id = ''
+  if 'result' in r and 'sessionID' in r['result']:
+    session_id = r['result']['sessionID']
+
+  return session_id
