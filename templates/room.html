@@ -19,15 +19,36 @@
 
     <div class="span7 span-fixed-sidebar">
       <div class="span11">
-        <h1>Welcome to room: {{ room }}</h1>
-        <form id="login-form" class="well form-inline">
-          <input name="username-input" id="username-input" type="text" class="input-small" placeholder="Email/Username">
-          <input id="password-input" name="password-input"  type="password" class="input-small" placeholder="Password">
-          <label class="checkbox">
-            <input type="checkbox"> Remember me
-          </label>
-          <button type="submit" class="btn">Sign in</button>
-        </form>
+
+        <div class="login">
+          <div class="accordion" id="login-accordion">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#login-accordion" href="#login-accordion-content">
+                  <h6>Login</h6>
+                </a>
+              </div>
+              <div id="login-accordion-content" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <form id="login-form" class="well form-inline">
+                    <input name="username-input" id="username-input" type="text" class="input-small" placeholder="Email/Username">
+                    <input id="password-input" name="password-input"  type="password" class="input-small" placeholder="Password">
+                    <label class="checkbox">
+                      <input type="checkbox"> Remember me
+                    </label>
+                    <button type="submit" class="btn">Sign in</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="top-area">
+          <h2 class="room-name">Welcome to room: <span>{{ room }}</span></h2>
+          <a data-toggle="modal" href="#invite-code" class="btn btn-primary invite-code">Invite</a>
+        </div>
         <br>
         <form id="search-form" class="form-search">
           <input id="search-box" type="text" class="input-large search-query span12" placeholder="Search for a song, album, or artist" name="search-box">
@@ -39,7 +60,6 @@
           <li id="view-playlist-tab"><a href="#view-playlists-content" data-toggle="tab">Playlists</a></li>
         </ul>
 
-        <div id="qrcode"></div>
 
         <div class="content-box">
           <div class="tab-content">
@@ -110,6 +130,18 @@
   <footer>
     <p>&copy; Bling Labs2012</p>
   </footer>
+
+
+  <section id="modals">
+    <div id="invite-code" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Scan and Join!</h3>
+      </div>
+      <div class="modal-body">
+        <div id="qrcode"></div>
+      </div>
+  </section>
 
 {% endblock %}
 

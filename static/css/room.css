@@ -4,8 +4,24 @@
  *
  */
 
-body {
 
+.room-name {
+  float: left;
+  margin-right: 20px;
+}
+
+.room-name span {
+  text-transform: uppercase;
+}
+
+.top-area {
+  display; inline;
+}
+
+.top-area .invite-code {
+  position: relative;
+  top: 3px;
+  float: left;
 }
 
 .sidebar-nav-fixed {
@@ -62,6 +78,16 @@ body {
 
 .top-buttons .action-buttons {
   float: right;
+}
+
+.timer {
+  position: relative;
+  top: 5px;
+  font-weight: lighter;
+  padding-left: 10px;
+  font-size: 20px;
+  padding-top: 9px;
+  color: #8F8F8F;
 }
 
 .queue table thead tr td h6 {
@@ -215,26 +241,67 @@ a.accordion-toggle:hover {
   text-decoration: none;
 }
 
-.accordion-group {
+.guest-list .accordion-group {
   background-color: #222;
   background: url(../img/dinpattern-stripe.gif);
 }
 
-.accordion-body {
+.guest-list .accordion-body {
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 400px;
 }
 
-.accordion-inner {
+.guest-list .accordion-inner {
   background-color: #E4E4E4;
 }
 
-.accordion-inner hr {
+.guest-list .accordion-inner hr {
   border-top: 1px solid #888;
   border-bottom: 1px solid #777;
 }
 
-.accordion-heading{
+.guest-list .accordion-heading{
+  text-align: center;
+}
+
+.login .accordion-group {
+  width: 250px;
+}
+
+#invite-code {
+  display: block;
+}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+  opacity: 0.2;
+  filter: alpha(opacity=80);
+}
+
+.modal.fade.in {
+  top: 70%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.modal {
+  width: 260px;
+  left: 80%;
+}
+
+.modal-header {
+  background-color: #7788D5;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  text-align: center;
+}
+
+.modal-body {
   text-align: center;
 }
