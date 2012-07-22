@@ -36,3 +36,18 @@ def start_session():
     session_id = r['result']['sessionID']
 
   return session_id
+
+
+# Returns a country object based on the request IP.
+def get_country(sessionID):
+  json_data = json.dumps({
+    'method': 'getCountry',
+    'header': {
+      'wsKey': gs_key,
+      'sessionID':sessionID
+    }
+  })
+
+  result = post_request(json_data).json
+  return result['result']
+>>>>>>> Adds get_country request function to gs_request.
