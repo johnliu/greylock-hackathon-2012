@@ -19,11 +19,12 @@ $(document).ready(function() {
   var room = window.location.pathname;
 
   var search_handler = function() {
+    alert('hi');
     var search = $("input#search-box").val();
     $.get('_search', {'search_query': search}, function(data) {
       //$('.result').html(data);
       var query_set = $.parseJSON(data);
-      console.log(data[0]);
+      console.log(query_set[0]);
     });
     return false;
   }
