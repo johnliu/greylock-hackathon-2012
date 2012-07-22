@@ -13,7 +13,9 @@ def test():
   #r = gs.get_artist_search_results(sID, 'Jay Chou', limit=5)
   #r = gs.get_popular_songs_month()
   #r = gs.get_playlist_songs(sID, '70757508')
-  test_authenticate(sID)
+  r = gs.get_album_art(sID, '90943')
+  print r
+  #test_authenticate(sID)
 
 def test_authenticate(sID):
   r = gs.authenticate(sID, 'asdfprou', os.environ.get('GS_USER_PW'))

@@ -107,6 +107,26 @@ def get_country(session_id):
   return r.get('result') or ''
 
 
+def get_albums_info(session_id, album_ids):
+  """
+  Returns meta data pertaining to the album_ids passed in.
+  """
+  r = generic_request('getAlbumsInfo', session=session_id, albumIDs=album_ids)
+  return r.get('result') or ''
+
+
+def get_album_art(session_id, album_id):
+  """
+  Returns album art URL.
+  """
+  r = get_albums_info(session_id, [album_id])
+  print r
+  if r.get('albums'):
+    return "http://images.grooveshark.com/static/albums/90_" + r['albums'][0]['CoverArtFilename']
+  else:
+    return "http://images.grooveshark.com/static/albums/90_11111.png"
+
+
 def get_user_library_songs(session_id):
   """
   Returns songs from the user's library.
