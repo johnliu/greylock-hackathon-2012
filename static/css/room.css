@@ -123,7 +123,15 @@ a.song-link:hover {
 }
 
 .queue .table tbody tr:hover td, .queue .table tbody tr:hover th {
-  background-color:#162281;
+  background-color:#133962;
+}
+
+.queue .table tbody tr td.queue-song-actions .action-buttons {
+  visibility: hidden;
+}
+
+.queue .table tbody tr:hover td.queue-song-actions .action-buttons {
+  visibility: visible;
 }
 
 .tooptip {
