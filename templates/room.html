@@ -18,7 +18,7 @@
     </div><!--/span-->
 
     <div class="span7 span-fixed-sidebar">
-      <div class="span10">
+      <div class="span11">
         <h1>You are in room {{ room }}</h1>
         <br>
         <form id="search-form" class="form-search">
@@ -36,7 +36,7 @@
               <h6 class="search-result-text">
                 Search Results Matching: <span></span>
               </h6>
-              <table class="table table-striped">
+              <table class="table table-striped table-condensed">
                 <thead>
                   <tr>
                     <th class="search-result-song">Song</th>
@@ -60,10 +60,22 @@
 
   </div><!--/container row-->
 
-  <div class="name-list">
-    <b>Guest List</b>
-    <ul id='guest-list' class="unstyled">
-    </ul>
+  <div class="guest-list">
+    <div class="accordion" id="guest-accordion">
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#guest-accordion" href="#guest-list-accordion">
+            <h6>Guest List</h6>
+          </a>
+        </div>
+        <div id="guest-list-accordion" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <ul class="unstyled" id="guest-list">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <hr>

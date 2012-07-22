@@ -25,16 +25,6 @@
   margin-left: 530px;
 }
 
-.name-list {
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
-  width: 200px;
-  height: 100px;
-  background-color: black;
-  border: 3px solid red;
-}
-
 .now-playing-text {
   padding-bottom: 6px;
 }
@@ -175,5 +165,18 @@ a.song-link:hover {
   display: none;
 }
 
+.guest-list {
+  position: fixed;
+  bottom: -20px;
+  right: 0px;
+  width: 200px;
+  height: auto;
+}
 
+a.accordion-toggle:hover {
+  text-decoration: none;
+}
 
+.accordion-heading{
+  text-align: center;
+}
