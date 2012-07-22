@@ -1,4 +1,5 @@
 import os
+import gs_api as gs
 
 from flask import Flask, render_template, session
 
@@ -29,9 +30,18 @@ def gs_request(method, parameters):
 def front():
   return render_base(template='front.html')
 
+
 @app.route('/room')
 def room():
   return render_base(template='room.html')
+
+
+@app.route('/play')
+def play():
+  """
+  Test method.
+  """
+  return render_base()
 
 
 if __name__ == '__main__':

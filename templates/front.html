@@ -9,12 +9,13 @@
 {{ super() }}
 <form id="name-form" class="well">
   <label><h1>Room Name</h1></label>
-  <input type="text" class="span3" placeholder="Coolest room evars."><br>
-  <button type="submit" class="btn btn-large btn-primary">Join</button>
+  <input id="name" type="text" class="span3" placeholder="Coolest room evars."><br>
+  <button id="name-form-submit" type="submit" class="btn btn-large btn-primary">Join</button>
 </form>
 {% endblock %}
 
 {% block js %}
 {{ super() }}
+<script src="{{ url_for('static', filename='js/firebase/front.js') }}"></script>
 {% endblock %}
 
