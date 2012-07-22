@@ -69,7 +69,6 @@ def queue_list():
     response.headers['Content-Type'] = 'application/'
     response.headers['Content-Disposition'] = 'attachment; filename=%s' % filename
     response.headers['X-Accel-Redirect'] = server_path
-    import sys; print >> sys.stderr, response
     return response
 
 @app.route('/_search')
