@@ -185,7 +185,6 @@ a.song-link:hover {
   right: 0px;
   width: 200px;
   height: auto;
-  max-height: 300px;
 }
 
 a.accordion-toggle:hover {
@@ -196,10 +195,20 @@ a.accordion-toggle:hover {
   background-color: #222;
   background: url(../img/dinpattern-stripe.gif);
 }
-.accordion-inner {
-  background-color: #D1D1D1;
+
+.accordion-body {
   overflow-y: scroll;
   overflow-x: hidden;
+  max-height: 400px;
+}
+
+.accordion-inner {
+  background-color: #D1D1D1;
+}
+
+.accordion-inner hr {
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #777;
 }
 
 .accordion-heading{
