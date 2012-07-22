@@ -8,7 +8,8 @@ def test():
   #r = gs.get_autocomplete_search_results(sID, 'Call Me M', limit=5)
   #r = gs.get_song_search_results(sID, 'Call Me Maybe', limit=5)
   #r = gs.get_album_search_results(sID, 'Greatest Hits', limit=5)
-  r = gs.get_artist_search_results(sID, 'Jay Chou', limit=5)
+  #r = gs.get_artist_search_results(sID, 'Jay Chou', limit=5)
+  r = gs.get_popular_songs_month()
   print r
 
 if __name__ == '__main__':
