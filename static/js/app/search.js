@@ -222,7 +222,7 @@ $(document).ready(function() {
                   </a>\
                 </div>\
               </td>\
-            <tr>\
+            </tr>\
         '
 
         search_list.append(inserted_element);
