@@ -15,10 +15,10 @@ $(document).ready(function() {
   var play_song = function(song_id) {
     $.getJSON('/_play', {'song_id': song_id}, function(data) {
       song_data = data;
+      song_data['song_id'] = song_id
 
       var audioPlayer = document.getElementById('player');
       audioPlayer.src = song_data.url;
-      console.log('playing ' + song_id);
     });
   }
 
@@ -27,8 +27,9 @@ $(document).ready(function() {
   audioPlayer.addEventListener('ended', function() {
     // Send callback to grooveshark.
     console.log('Sent song complete.');
+    console.log(song_data);
     past_30 = false;
-    $.post('/_complete', song_data);
+    $.post('/_complete', song_data, function(data) { console.log(data) });
 
     i = (i + 1) % song_list.length;
     play_song(song_list[i]);
@@ -38,10 +39,9 @@ $(document).ready(function() {
     // Send callback to GS.
     if (audioPlayer.currentTime > 30 && !past_30) {
       console.log('Marked over 30');
+      console.log(song_data);
       past_30 = true;
-      $.post('/_over_30', song_data);
-    } else {
-      console.log(audioPlayer.currentTime);
+      $.post('/_over_30', song_data, function(data) { console.log(data) });
     }
   });
 
