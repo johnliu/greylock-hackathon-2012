@@ -1,4 +1,5 @@
 import hmac
+import hashlib
 import json
 import os
 import requests
@@ -60,14 +61,22 @@ def authenticate(session_id, user, pw):
   """
   Authenticates a user session using a MD5 hashed password.
   """
-  pw_hashed = hmac.new(gs_secret.encode('utf-8'), pw).hexdigest()
+  pw_hashed = hashlib.md5(pw).hexdigest()
   r = generic_request('authenticate', session=session_id, secure=True,
                       login=user, password=pw_hashed)
 
-  if 'result' in r and 'sessionID' in r['result']:
-    session_id = r['result']['sessionID']
+  if 'result' in r and r['result']['success']:
+    return True
+  else:
+    return False
 
-  return session_id
+
+def logout(session_id):
+  """
+  Logs out current session.
+  """
+  r = generic_request('logout', session=session_id)
+  return r.get('result') or ''
 
 
 def get_country(session_id):
@@ -76,6 +85,56 @@ def get_country(session_id):
   """
   r = generic_request('getCountry', session=session_id)
   return r.get('result') or ''
+
+
+def get_user_library_songs(session_id):
+  """
+  Returns songs from the user's library.
+  """
+  r = generic_request('getUserLibrarySongs', session=session_id)
+  result = r.get('result')
+  if result:
+    return result.get('songs')
+  else:
+    return None
+
+
+def get_user_playlists(session_id):
+  """
+  Returns the user's playlists.
+  """
+  r = generic_request('getUserPlaylists', session=session_id)
+  result = r.get('result')
+  if result:
+    return result.get('playlists')
+  else:
+    return None
+
+
+def add_user_favorite_song(session_id, song_id):
+  """
+  Adds a song to the user's favorites.
+  """
+  r = generic_request('addUserFavoriteSong', session=session_id,
+                      songID=song_id)
+  result = r.get('result')
+  if result:
+    return result.get('success')
+  else:
+    return None
+
+
+def remove_user_favorite_songs(session_id, song_ids):
+  """
+  Removes a song from the user's favorites.
+  """
+  r = generic_request('removeUserFavoriteSongs', session=session_id,
+                      songIDs=song_ids)
+  result = r.get('result')
+  if result:
+    return result.get('success')
+  else:
+    return None
 
 
 def mark_stream_key_over_30_secs(session_id, stream_key, stream_server_id):
