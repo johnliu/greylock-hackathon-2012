@@ -19,7 +19,6 @@ $(document).ready(function() {
   var room = window.location.pathname;
 
   var search_handler = function() {
-    alert('hi');
     var search = $("input#search-box").val();
     $.get('_search', {'search_query': search}, function(data) {
       //$('.result').html(data);
