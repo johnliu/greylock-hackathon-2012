@@ -3,13 +3,19 @@
  * Session room stylesheet
  *
  */
+.export-button {
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 100;
+}
 .search-result-table tr {
   background-color: white;
 }
 
 .banner {
   position: relative;
-  top: -20px;
+  top: -25px;
   font-size: 14px;
   color: #999;
 }
@@ -294,7 +300,7 @@ a.accordion-toggle:hover {
 
 .login .accordion-group {
   position: absolute;
-  top: 0px;
+  top: 10px;
   right: 10px;
   width: 130px;
   border: none;
