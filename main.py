@@ -31,6 +31,24 @@ def front():
   return render_base('front.html')
 
 
+"""MOBILE"""
+
+@app.route('/m')
+def mobile():
+  return render_base('front.html')
+
+@app.route('/m/<room>')
+def mobile_room(room):
+  return render_base('mobile_room.html', room=room)
+
+@app.route('/m/_search')
+def mobile_search():
+  search_query = request.args.get('search_query')
+  return json_search(search_query)
+
+"""MOBILE"""
+
+
 @app.route('/<room>')
 def room(room):
   return render_base('room.html', room=room)
@@ -44,11 +62,10 @@ def play():
 
 
 @app.route('/_search')
-def json_search():
-  search_query = request.args.get('search_query')
-  search_result = '';
-  if search_query:
-    search_result = ts.search_request(search_query, limit=50)
+def json_search(search_query=''):
+  if not search_query:
+    search_query = request.args.get('search_query')
+  search_result = ts.search_request(search_query, limit=50)
   return json.dumps(search_result)
 
 
