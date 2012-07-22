@@ -86,3 +86,10 @@ def get_stream_key_stream_server(session_id, song_id):
           'stream_server_id': stream_server_id,
           'duration' : duration}
 
+
+def get_playlist(session_id, playlist_id):
+  """
+  Returns a playlist object.
+  """
+  r = generic_request('getPlaylist', session=session_id, playlistID=playlist_id)
+  return r.get('result') or ''
