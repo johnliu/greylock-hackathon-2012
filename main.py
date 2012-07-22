@@ -48,7 +48,7 @@ def json_search():
   search_query = request.args.get('search_query')
   search_result = '';
   if search_query:
-    search_result = ts.search_request(search_query)
+    search_result = ts.search_request(search_query, limit=50)
   return json.dumps(search_result)
 
 
