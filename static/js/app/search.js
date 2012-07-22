@@ -11,8 +11,8 @@ $(document).ready(function() {
   // Get the audio player.
   var audio_player = document.getElementById('player');
 
-  var stream_song = function(song_id) {
-    $.getJSON('/_play', {'song_id': song_id}, function(data) {
+  var stream_song = function(song_id, album_id) {
+    $.getJSON('/_play', {'song_id': song_id, 'album_id': album_id}, function(data) {
       // Set the current song data.
       current_song_data = data;
       current_song_data['song_id'] = song_id;
@@ -25,7 +25,7 @@ $(document).ready(function() {
       var current_song_meta = songs_list.shift();
       songs_db.set(songs_list);
 
-      stream_song(current_song_meta.SongID);
+      stream_song(current_song_meta.SongID, current_song_meta.AlbumID);
     } else {
       // Top 400 thing.
     }
@@ -63,13 +63,12 @@ $(document).ready(function() {
   $('#next').click(function() {
     next();
   });
+  
   songs_db.on('value', function(snapshot) {
     songs_list = snapshot.val();
     if (typeof songs_list === 'undefined' || songs_list == null) {
       songs_list = [];
     }
-
-    console.log(songs_list);
 
     var queue_table =  $('#queue-table');
     queue_table.empty(); 
