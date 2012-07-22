@@ -3,15 +3,26 @@
 {% block css %}
 {{ super() }}
 <link href="{{ url_for('static', filename='css/front.css') }}" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Italianno' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oleo+Script|Engagement|Tulpen+One' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block content %}
 {{ super() }}
-<form id="name-form" method="post" class="well">
-  <label><h1>Room Name</h1></label>
-  <input id="name" name="name" type="text" class="span3" placeholder="Join a party!"><br>
-  <button id="name-form-submit" type="submit" class="btn btn-large btn-primary">Join</button>
-</form>
+<div class="centered-container">
+  <div class="container-border">
+    <h1 class="bling-beats">Bling Beats</h1>
+    <form id="name-form" method="post" class="">
+      <div class="input-container">
+        <label>
+          <h4>Create or join a music room</h4>
+        </label>
+        <input id="name" name="name" type="text" class="input-large" placeholder="Enter room name">
+        <button id="name-form-submit" type="submit" class="btn btn-large btn-primary">Party!</button>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}
 
 {% block js %}

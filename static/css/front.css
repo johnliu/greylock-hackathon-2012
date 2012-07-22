@@ -4,21 +4,55 @@
  *
  */
 
+body {
+  background: url(../img/dinpattern-stripe.gif);
+}
 
-#name-form {
+h1.bling-beats {
+  font-weight: thicker;
+  color: #F2F2F2;
+  font-family: 'Tulpen One', cursive;
+  font-size: 100px;
+  text-align: center;
+  text-shadow: #222 4px 4px 2px;
+}
+
+.centered-container{
   position: absolute;
   top: 35%;
   left: 45%;
-  width: 260px;
-  height: 100px;
-  margin-top: -50px;
-  margin-left: -130px;
+  width: 360px;
+  height: 120px;
+  margin-top: -60px;
+  margin-left: -180px;
   /* margins are half of width/height */
   padding: 60px;
   padding-bottom: 90px;
 }
 
-  #name-form label {
-    margin-bottom: 30px;
-  }
+#name-form label {
+  margin-top: 40px;
+  color: #666;
+}
+
+#name-form .input-large {
+  width: 250px;
+}
+
+.input-container {
+  display: relative;
+  padding-left: 25px;
+  width: 100%;
+}
+
+.input-container input {
+  float: left;
+  margin-right: 15px;
+}
+
+.input-container button {
+  position: relative;
+  top: -5px;
+  float: left;
+}
 
