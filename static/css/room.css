@@ -279,7 +279,7 @@ a.accordion-toggle:hover {
 }
 
 .modal.fade.in {
-  top: 70%;
+  top: 60%;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -287,8 +287,8 @@ a.accordion-toggle:hover {
 }
 
 .modal {
-  width: 260px;
-  left: 80%;
+  width: auto;
+  left: 75%;
 }
 
 .modal-header {
