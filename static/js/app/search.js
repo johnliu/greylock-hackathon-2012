@@ -16,7 +16,7 @@ $(document).ready(function() {
   var audio_player = document.getElementById('player');
 
   var stream_song = function(song_id, album_id) {
-    if ($.cookie('id') != 0) {
+    if ($.cookie(room) != 0) {
       return;
     }
 
