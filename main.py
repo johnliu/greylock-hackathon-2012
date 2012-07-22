@@ -2,7 +2,8 @@ import os
 import gs_api as gs
 import ts_api as ts
 
-from flask import Flask, render_template, session
+from flask import (Flask, render_template, session,
+    request, redirect, url_for)
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -18,14 +19,17 @@ def render_base(template='base.html', **kwargs):
   return render_template(template, **merged_args)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def front():
-  return render_base(template='front.html')
+  if request.method == 'POST':
+    # create Grooveshark session ID
+    return redirect(url_for('room', room=request.form['name']))
+  return render_base('front.html')
 
 
-@app.route('/room')
-def room():
-  return render_base(template='room.html')
+@app.route('/<room>')
+def room(room):
+  return render_base('room.html', room=room)
 
 
 @app.route('/play')
