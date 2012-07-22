@@ -8,6 +8,10 @@ gs_key = os.environ.get('GS_KEY')
 
 
 def post_request(json_data, secure=False):
+  """
+  Sends a post request to grooveshark, with a json object data. Returns the
+  json response as a python dictionary.
+  """
   # Generate the url
   if secure:
     url = 'https://api.grooveshark.com/ws3.php?sig='
@@ -21,15 +25,29 @@ def post_request(json_data, secure=False):
   return requests.post(url + signature, json_data).json
 
 
-def start_session():
-  json_data = json.dumps({
-    'method': 'startSession',
+def generic_request(method, session=None, secure=False, **parameters):
+  """
+  Starts a generic request, returns the json response as a python dictionary.
+  """
+  data = {
+    'method': method,
     'header': {
       'wsKey': gs_key
-    }
-  })
+    },
+    'parameters': parameters
+  }
 
-  r = post_request(json_data, secure=True)
+  if session:
+    data['header']['sessionID'] = session
+
+  return post_request(json.dumps(data), secure=secure)
+
+
+def start_session():
+  """
+  Returns a new session id.
+  """
+  r = generic_request('startSession', secure=True)
 
   session_id = ''
   if 'result' in r and 'sessionID' in r['result']:
@@ -38,15 +56,9 @@ def start_session():
   return session_id
 
 
-# Returns a country object based on the request IP.
-def get_country(sessionID):
-  json_data = json.dumps({
-    'method': 'getCountry',
-    'header': {
-      'wsKey': gs_key,
-      'sessionID':sessionID
-    }
-  })
-
-  result = post_request(json_data).json
-  return result['result']
+def get_country(session_id):
+  """
+  Returns a country object based on the request IP.
+  """
+  r = generic_request('getCountry', session=session_id)
+  return r.get('result') or ''
