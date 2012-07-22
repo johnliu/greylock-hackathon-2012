@@ -3,6 +3,9 @@
  * Session room stylesheet
  *
  */
+.table tr {
+  background-color: white;
+}
 
 .banner {
   position: relative;
