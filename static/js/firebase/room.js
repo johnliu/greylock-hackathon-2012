@@ -20,9 +20,10 @@ $(document).ready(function() {
 
   var search_handler = function() {
     var search = $("input#search-box").val();
-    $.post(window.location.pathname, {'search_query': search}, function(data) {
+    $.get('_search', {'search_query': search}, function(data) {
       //$('.result').html(data);
-      alert(data);
+      var query_set = $.parseJSON(data);
+      console.log(data[0]);
     });
     return false;
   }
