@@ -14,14 +14,14 @@
   position:fixed;
   left:0px;
   top:0px;
-  width:350px;
+  width:450px;
   height: 100%;
   color: #F2F2F2;
 }
 
 .row-fluid > .span-fixed-sidebar {
   padding-right: 20px;
-  margin-left: 440px;
+  margin-left: 530px;
 }
 
 .name-list {
@@ -45,14 +45,14 @@
 }
 
 .sidebar-album-cover {
-  height: 50px;
-  width: 50px;
+  height: 90px;
+  width: 90px;
   float:left;
   margin-right: 10px;
 }
 
 .control-buttons {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .queue table thead tr td h6 {
@@ -62,8 +62,10 @@
 .queue table {
   table-layout: fixed;
   color: #DADADA;
+  font-size: 12px;
 }
 .queue table tbody tr td {
+  border-top: 1px solid #333;
 }
 
 .song-link {
@@ -87,7 +89,7 @@ a.song-link:hover {
   position: absolute;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  border: 5px solid #333;
+  border: 5px solid #444;
   top: 0;
   bottom: 0;
   width: 100%;
@@ -99,7 +101,7 @@ a.song-link:hover {
 .queue-song-name {
   overflow: hidden;
   white-space: nowrap;
-  width: 60%;
+  width: 45%;
 }
 
 .table-condensed td.queue-song-artist {
@@ -107,7 +109,17 @@ a.song-link:hover {
 }
 
 .queue-song-artist {
-  width: 40%;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 30%;
+}
+
+.queue-song-actions {
+  width: 25%;
+}
+
+.table-condensed td.queue-song-actions {
+  padding-left: 10px;
 }
 
 .queue .table tbody tr:hover td, .queue .table tbody tr:hover th {
