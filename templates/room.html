@@ -39,6 +39,8 @@
           <li id="view-playlist-tab"><a href="#view-playlists-content" data-toggle="tab">Playlists</a></li>
         </ul>
 
+        <div id="qrcode"></div>
+
         <div class="content-box">
           <div class="tab-content">
             <div class="tab-pane" id="search-result-content">
@@ -116,5 +118,12 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/search.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/auth.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/tooltip.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  var href_room = 'http://air.local:5000' + window.location.pathname;
+  console.log(href_room);
+  $('#qrcode').qrcode({width:120, height:120, text:href_room});
+})
+</script>
 {% endblock %}
 
