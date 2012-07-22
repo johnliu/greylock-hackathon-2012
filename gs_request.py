@@ -50,4 +50,3 @@ def get_country(sessionID):
 
   result = post_request(json_data).json
   return result['result']
->>>>>>> Adds get_country request function to gs_request.
