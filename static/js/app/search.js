@@ -1,14 +1,16 @@
 $(document).ready(function() { 
   
-  console.log('work');
   // push songs to the playlist
-  $('.add-to-queue').on('click', function() {
-    alert('work');
-    console.log(this);
-    var song_info = $(this).parent().parent().children;
-    console.log(this);
-    alert(song_info);
-    return false;
+  $('.add-to-queue').live('click', function() {
+    var song_info = $(this).parent().parent().parent().children();
+    var song_name = song_info[0];
+    var artist_name = song_info[1];
+    var album_name = song_info[2];
+    var song_id = song_info[3];
+    console.log(song_name);
+    console.log(artist_name);
+    console.log(album_name);
+    console.log(song_id);
   });
 
   // song search field
@@ -24,6 +26,7 @@ $(document).ready(function() {
         $("<td />", {text: obj.SongName}).appendTo(song);
         $("<td />", {text: obj.ArtistName}).appendTo(song);
         $("<td />", {text: obj.AlbumName}).appendTo(song);
+        $("<td />", {text: obj.SongID, class: 'hide'}).appendTo(song);
         var div = $("<div />", {class: 'action-buttons'});
         var first_link = "<a href='#' class='btn btn-primary btn-mini add-to-queue'><i class='icon-plus icon-white'></i></a>";
         div.append(first_link);
