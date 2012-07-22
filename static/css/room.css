@@ -4,8 +4,12 @@
  *
  */
 
+body {
+
+}
 
 .sidebar-nav-fixed {
+  background: url(../img/dinpattern-stripe.gif);
   background-color: #222;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -157,8 +161,18 @@ a.song-link:hover {
   text-align: left;
 }
 
+.search-result-table {
+  margin-top: 10px;
+}
 .search-result-text {
   font-size: 13px;
+}
+
+.search-result-text span {
+  margin-left: 3px;
+  text-transform: none;
+  font-size: 17px;
+  color: #222;
 }
 
 .guest-list {
@@ -167,10 +181,21 @@ a.song-link:hover {
   right: 0px;
   width: 200px;
   height: auto;
+  max-height: 300px;
 }
 
 a.accordion-toggle:hover {
   text-decoration: none;
+}
+
+.accordion-group {
+  background-color: #222;
+  background: url(../img/dinpattern-stripe.gif);
+}
+.accordion-inner {
+  background-color: #D1D1D1;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .accordion-heading{
