@@ -136,6 +136,7 @@
 
 {% block js %}
 {{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/app/play.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/room.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/tooltip.js') }}"></script>
 {% endblock %}
