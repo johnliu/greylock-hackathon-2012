@@ -2,11 +2,18 @@
 
 {% block css %}
 {{ super() }}
+<link href="{{ url_for('static', filename='css/front.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 {{ super() }}
-front
+<div id="name-form">
+<form class="well">
+  <label>Room Name</label>
+  <input type="text" class="span3" placeholder="Coolest room evars."><br>
+  <button type="submit" class="btn btn-primary">Join</button>
+</form>
+</div>
 {% endblock %}
 
 {% block js %}
