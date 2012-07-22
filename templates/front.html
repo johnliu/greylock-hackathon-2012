@@ -7,9 +7,9 @@
 
 {% block content %}
 {{ super() }}
-<form id="name-form" class="well">
+<form id="name-form" method="post" class="well">
   <label><h1>Room Name</h1></label>
-  <input id="name" type="text" class="span3" placeholder="Coolest room evars."><br>
+  <input id="name" name="name" type="text" class="span3" placeholder="Coolest room evars."><br>
   <button id="name-form-submit" type="submit" class="btn btn-large btn-primary">Join</button>
 </form>
 {% endblock %}
