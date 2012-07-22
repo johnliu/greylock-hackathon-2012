@@ -16,3 +16,12 @@ $('.nav-pills li a').click(function (e) {
   $(this.getAttribute('href')).addClass('active');
   e.preventDefault();
 });
+
+$('.control-buttons a').click(function (e) {
+  if ($(this).find('i').hasClass('icon-play')) {
+    $(this).find('i').removeClass('icon-play').addClass('icon-pause');
+  }
+  else if ($(this).find('i').hasClass('icon-pause')) {
+    $(this).find('i').removeClass('icon-pause').addClass('icon-play');
+  }
+});

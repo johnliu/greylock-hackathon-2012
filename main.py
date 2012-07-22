@@ -61,14 +61,24 @@ def json_play():
   return json.dumps(song_data)
 
 
-@app.route('/_complete')
+@app.route('/_complete', methods=['POST'])
 def json_complete():
-  pass
+  form = request.form
+  success_data = ''
+  if 'gs_session' in session and form:
+    success_data = gs.mark_song_complete(session['gs_session'],
+        form['stream_key'], form['stream_server_id'], form['song_id'])
+  return json.dumps(success_data)
 
 
-@app.route('/_over_30')
+@app.route('/_over_30', methods=['POST'])
 def json_over_30():
-  pass
+  form = request.form
+  success_data = ''
+  if 'gs_session' in session and form:
+    success_data = gs.mark_stream_key_over_30_secs(session['gs_session'],
+        form['stream_key'], form['stream_server_id'])
+  return json.dumps(success_data)
 
 
 if __name__ == '__main__':
