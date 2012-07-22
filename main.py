@@ -1,4 +1,5 @@
 import os
+import json
 import gs_api as gs
 import ts_api as ts
 
@@ -22,7 +23,10 @@ def render_base(template='base.html', **kwargs):
 @app.route('/', methods=['GET', 'POST'])
 def front():
   if request.method == 'POST':
-    # create Grooveshark session ID
+    # Create the Grooveshark session for the room.
+    session['gs_session'] = gs.start_session()
+
+    # Redirect to the room.
     return redirect(url_for('room', room=request.form['name']))
   return render_base('front.html')
 
@@ -37,6 +41,15 @@ def play():
   gs_session = gs.start_session()
   gs_stream = gs.get_stream_key_stream_server(gs_session, 33123639)
   return render_base(template='play.html', data=gs_stream['url'])
+
+
+@app.route('/_play', methods=['GET'])
+def json_play():
+  song_id = request.args.get('song_id')
+  if 'gs_session' in session and song_id:
+    song_data = gs.get_stream_key_stream_server(session['gs_session'], song_id)
+    return json.dumps(song_data)
+  return json.dumps('')
 
 
 if __name__ == '__main__':

@@ -75,6 +75,11 @@ def get_stream_key_stream_server(session_id, song_id):
       songID=song_id,
       country=country).get('result')
 
+  url = ''
+  stream_key = ''
+  stream_server_id = ''
+  duration = ''
+
   if (result):
     url = result.get('url')
     stream_key = result.get('StreamKey')
