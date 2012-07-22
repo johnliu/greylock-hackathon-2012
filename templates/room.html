@@ -12,10 +12,8 @@
   <div class="row-fluid row">
     <div class="span3">
       <div class="well sidebar-nav-fixed">
-
-        {% include 'room_sidebar_control.html' %}
-        {% include 'room_sidebar_queue.html' %}
-
+      {% include 'room_sidebar_control.html' %}
+      {% include 'room_sidebar_queue.html' %}
       </div><!--/.well -->
     </div><!--/span-->
 
@@ -36,7 +34,7 @@
           <div class="tab-content">
             <div class="tab-pane" id="search-result-content">
               <h6 class="search-result-text">
-                Search Results Matching: <span>some searches</span>
+                Search Results Matching: <span></span>
               </h6>
               <table class="table table-striped">
                 <thead>
@@ -44,7 +42,6 @@
                     <th class="search-result-song">Song</th>
                     <th class="search-result-artist">Artist</th>
                     <th class="search-result-album">Album</th>
-                    <th class="search-result-actions"></th>
                   </tr>
                 </thead>
                 <tbody id="song-list">
