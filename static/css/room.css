@@ -1,3 +1,10 @@
+/*
+ *
+ * Session room stylesheet
+ *
+ */
+
+
 .sidebar-nav-fixed {
   background-color: #333;
   -webkit-border-radius: 0px;
@@ -34,3 +41,4 @@
 .sidebar-song-artist {
   color: #EAEAEA;
 }
+
