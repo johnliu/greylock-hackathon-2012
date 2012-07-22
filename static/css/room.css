@@ -175,6 +175,30 @@ a.song-link:hover {
   color: #222;
 }
 
+.search-result-song {
+  width: 45%;
+}
+
+.search-result-artist {
+  width: 20%;
+}
+
+.search-result-album {
+  width: 25%;
+}
+
+.search-result-actions {
+  width: 10%;
+}
+
+.search-result-table tbody tr .action-buttons {
+  visibility: hidden;
+}
+
+.search-result-table tbody tr:hover .action-buttons {
+  visibility: visible;
+}
+
 .hide {
   display: none;
 }
@@ -203,7 +227,7 @@ a.accordion-toggle:hover {
 }
 
 .accordion-inner {
-  background-color: #D1D1D1;
+  background-color: #E4E4E4;
 }
 
 .accordion-inner hr {
