@@ -1,5 +1,5 @@
 import os
-import gs_request as gs
+import gs_api as gs
 
 from flask import (Flask, render_template, session,
     request, redirect, url_for)
