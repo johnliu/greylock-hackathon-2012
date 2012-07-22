@@ -26,13 +26,18 @@ def front():
     # Create the Grooveshark session for the room.
     session['gs_session'] = gs.start_session()
 
-    # Redirect to the room.
-    return redirect(url_for('room', room=request.form['name']))
+    room = request.form['name'].replace(' ', '_')
+    return redirect(url_for('room', room=room))
   return render_base('front.html')
 
 
-@app.route('/<room>')
+@app.route('/<room>', methods=['GET', 'POST'])
 def room(room):
+  import sys
+  if request.method == 'POST':
+    search_result = ts.search_request(request.form['search_query'])
+    result_json = json.dumps(search_result)
+    return result_json
   return render_base('room.html', room=room)
 
 

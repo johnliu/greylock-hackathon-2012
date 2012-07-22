@@ -64,6 +64,25 @@ def get_country(session_id):
   return r.get('result') or ''
 
 
+def mark_stream_key_over_30_secs(session_id, stream_key, stream_server_id):
+  """
+  Marks a stream that has been played over 30 seconds.
+  """
+  r = generic_request('markStreamKeyOver30Secs', session=session_id,
+                      streamKey=stream_key, streamServerID=stream_server_id)
+  return r.get('result') or ''
+
+
+def mark_song_complete(session_id, stream_key, stream_server_id, song_id):
+  """
+  Marks a song that has completed and has played more than 30 secs.
+  """
+  r = generic_request('markSongComplete', session=session_id,
+                      streamKey=stream_key, streamServerID=stream_server_id,
+                      songID=song_id)
+  return r.get('result') or ''
+
+
 def get_stream_key_stream_server(session_id, song_id):
   """
   Returns a python dict with {url, StreamServerID, StreamKey, duration}.
@@ -97,4 +116,60 @@ def get_playlist(session_id, playlist_id):
   Returns a playlist object.
   """
   r = generic_request('getPlaylist', session=session_id, playlistID=playlist_id)
+  return r.get('result') or ''
+
+
+def get_song_url_from_song_id(session_id, song_id):
+  """
+  Returns a Grooveshark URL for the song id specified.
+  """
+  r = generic_request('getSongURLFromSongID', session=session_id, songID=song_id)
+  return r.get('result') or ''
+
+
+def get_autocomplete_search_results(session_id, query, limit=5):
+  """
+  Returns some autocomplete search results.
+  """
+
+  # TODO(jng): Sanitize query input.
+  r = generic_request('getAutocompleteSearchResults', session=session_id,
+                      query=query, type='user', limit=limit)
+  #return r.get('result') or ''
+  return r
+
+
+def get_song_search_results(session_id, query, limit=5):
+  """
+  Returns some song search results.
+  """
+
+  country = get_country(session_id)
+  # TODO(jng): Sanitize query input.
+  r = generic_request('getSongSearchResults', session=session_id,
+                      query=query, country=country, limit=limit)
+  return r.get('result') or ''
+
+
+def get_album_search_results(session_id, query, limit=5):
+  """
+  Returns some album search results.
+  """
+
+  country = get_country(session_id)
+  # TODO(jng): Sanitize query input.
+  r = generic_request('getAlbumSearchResults', session=session_id,
+                      query=query, country=country, limit=limit)
+  return r.get('result') or ''
+
+
+def get_artist_search_results(session_id, query, limit=5):
+  """
+  Returns some artist search results.
+  """
+
+  country = get_country(session_id)
+  # TODO(jng): Sanitize query input.
+  r = generic_request('getArtistSearchResults', session=session_id,
+                      query=query, country=country, limit=limit)
   return r.get('result') or ''
