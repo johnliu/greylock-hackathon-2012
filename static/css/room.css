@@ -1,15 +1,20 @@
 .sidebar-nav-fixed {
   background-color: #333;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
   padding-right: 5px;
   position:fixed;
   left:0px;
   top:0px;
-  width:250px;
-  height: 100%
+  width:260px;
+  height: 100%;
+  color: #F2F2F2;
 }
 
 .row-fluid > .span-fixed-sidebar {
-  margin-left: 290px;
+  padding-right: 20px;
+  margin-left: 330px;
 }
 
 .name-list {
@@ -22,3 +27,10 @@
   border: 3px solid red;
 }
 
+.now-playing-text {
+  padding-bottom: 6px;
+}
+
+.sidebar-song-artist {
+  color: #EAEAEA;
+}
