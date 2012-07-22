@@ -63,12 +63,8 @@ $(document).ready(function() {
     }
 
     // Update the timer.
-    var remaining = current_song_data.duration/1000000 - audio_player.currentTime;
-
-    var mins = Math.floor(remaining / 60);
-    var secs = Math.floor(remaining % 60);
-    var secs_string = (secs < 10 ? '0' : '') + secs;
-    $('.timer').text(mins + ':' + secs_string);
+    current_song_timer =  current_song_data.duration/1000000 - audio_player.currentTime;
+    current_song_db.child('timer').set(current_song_timer)
   });
 
   $('#play-pause').click(function() {
@@ -85,6 +81,7 @@ $(document).ready(function() {
     if (typeof snapshot.val() !== 'undefined' && snapshot.val() != null) {
       current_song_data = snap.data;
       current_song_meta = snap.meta;
+      current_song_timer = snap.timer;
     }
 
     if (typeof current_song_data !== 'undefined' && current_song_data != null &&
@@ -94,6 +91,11 @@ $(document).ready(function() {
       $('#sidebar-song-title').text(current_song_meta.SongName);
       $('#sidebar-song-artist').text(current_song_meta.ArtistName);
       $('#sidebar-song-album').text(current_song_meta.AlbumName);
+
+      var mins = Math.floor(current_song_timer / 60);
+      var secs = Math.floor(current_song_timer % 60);
+      var secs_string = (secs < 10 ? '0' : '') + secs;
+      $('.timer').text(mins + ':' + secs_string);
     } else {
       $('#sidebar-cover-art').attr('src', '/static/img/default_cover_art.png');
       $('#sidebar-song-title').text('No song playing.');
