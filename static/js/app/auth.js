@@ -1,15 +1,5 @@
 $(document).ready(function() { 
   
-  console.log('auth');
-  // push songs to the playlist
-  $('.add-to-queue').on('click', function() {
-    console.log(this);
-    var song_info = $(this).parent().parent().children;
-    console.log(this);
-    alert(song_info);
-    return false;
-  });
-
   // authenticate form field
   var authenticate_handler = function() {
     var username = $("input#username-input").val();

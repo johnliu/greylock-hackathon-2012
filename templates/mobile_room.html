@@ -2,7 +2,7 @@
 
 {% block css %}
 {{ super() }}
-<link href="{{ url_for('static', filename='css/room.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/mobile_room.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -29,8 +29,6 @@
           <li id="search-result-tab"><a href="#search-result-content" data-toggle="tab">Search Results</a></li>
         </ul>
 
-        <div id="qrcode"></div>
-
         <div class="content-box">
           <div class="tab-content">
             <div class="tab-pane" id="search-result-content">
@@ -52,8 +50,6 @@
             </div> <!-- /.search-result -->
           </div> <!-- /.tab-content -->
         </div>
-
-
       </div><!--/span10 -->
     </div>
 
@@ -70,7 +66,5 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/search.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/auth.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app/tooltip.js') }}"></script>
-<script type="text/javascript">
-</script>
 {% endblock %}
 
