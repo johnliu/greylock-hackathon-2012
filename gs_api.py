@@ -64,6 +64,25 @@ def get_country(session_id):
   return r.get('result') or ''
 
 
+def mark_stream_key_over_30_secs(session_id, stream_key, stream_server_id):
+  """
+  Marks a stream that has been played over 30 seconds.
+  """
+  r = generic_request('markStreamKeyOver30Secs', session=session_id,
+                      streamKey=stream_key, streamServerID=stream_server_id)
+  return r.get('result') or ''
+
+
+def mark_song_complete(session_id, stream_key, stream_server_id, song_id):
+  """
+  Marks a song that has completed and has played more than 30 secs.
+  """
+  r = generic_request('markSongComplete', session=session_id,
+                      streamKey=stream_key, streamServerID=stream_server_id,
+                      songID=song_id)
+  return r.get('result') or ''
+
+
 def get_stream_key_stream_server(session_id, song_id):
   """
   Returns python dict with <url, StreamServerID, StreamKey, duration(in uSecs)>.
