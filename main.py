@@ -121,15 +121,15 @@ def json_play():
   cover_art_result = '';
   song_data = ''
   if 'gs_session' in session and song_id:
-    #song_data = gs.get_stream_key_stream_server(session['gs_session'], song_id)
+    song_data = gs.get_stream_key_stream_server(session['gs_session'], song_id)
 
-    import random
-    song_data = {
-      'url': url_for('static', filename='.test/0%s.mp3' % random.randrange(1, 6)),
-      'stream_key': '',
-      'stream_server_id': '',
-      'duration': 5000000
-    }
+    #import random
+    #song_data = {
+      #'url': url_for('static', filename='.test/0%s.mp3' % random.randrange(1, 6)),
+      #'stream_key': '',
+      #'stream_server_id': '',
+      #'duration': 5000000
+    #}
 
     if album_id:
       cover_art_result = gs.get_album_art(session['gs_session'], album_id)
