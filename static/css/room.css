@@ -31,12 +31,12 @@
 .background {
   position: fixed;
   background: url(../img/music.jpg);
-  background-size: 400px auto;
+  background-size: 450px auto;
   background-repeat: no-repeat;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   top: 30px;
-  right: 20px;
+  right: 0px;
   z-index: -10;
 }
 
