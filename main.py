@@ -120,6 +120,7 @@ def json_play():
 
   cover_art_result = '';
   song_data = ''
+
   if 'gs_session' in session and song_id:
     song_data = gs.get_stream_key_stream_server(session['gs_session'], song_id)
 
@@ -134,6 +135,7 @@ def json_play():
     if album_id:
       cover_art_result = gs.get_album_art(session['gs_session'], album_id)
       song_data['cover_art_url'] = cover_art_result
+
   return json.dumps(song_data)
 
 
@@ -144,6 +146,11 @@ def json_complete():
   if 'gs_session' in session and form:
     success_data = gs.mark_song_complete(session['gs_session'],
         form['stream_key'], form['stream_server_id'], form['song_id'])
+
+    import sys
+    print >> sys.stderr, 'Completed, removing song from cache.'
+
+    del simple_cache[form['song_id']]
   return json.dumps(success_data)
 
 

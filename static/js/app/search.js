@@ -16,15 +16,17 @@ $(document).ready(function() {
   var audio_player = document.getElementById('player');
 
   var stream_song = function(song_id, album_id) {
+    console.log('Server call attempted.');
+    if ($.cookie(room) != 0) {
+      console.log("Not playing, so it's fine.");
+      return;
+    }
+
     $.getJSON('/_play', {'song_id': song_id, 'album_id': album_id}, function(data) {
       // Set the current song data.
       current_song_data = data;
       current_song_data['song_id'] = song_id;
       current_song_db.child('data').set(current_song_data);
-
-      if ($.cookie(room) != 0) {
-        return;
-      }
 
       audio_player.src = current_song_data.url;
     });
