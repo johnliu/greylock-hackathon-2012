@@ -16,7 +16,9 @@ $(document).ready(function() {
   var audio_player = document.getElementById('player');
 
   var stream_song = function(song_id, album_id) {
+    console.log('Server call attempted.');
     if ($.cookie(room) != 0) {
+      console.log("Not playing, so it's fine.");
       return;
     }
 
@@ -25,6 +27,7 @@ $(document).ready(function() {
       current_song_data = data;
       current_song_data['song_id'] = song_id;
       current_song_db.child('data').set(current_song_data);
+
       audio_player.src = current_song_data.url;
     });
   }
@@ -93,14 +96,19 @@ $(document).ready(function() {
   });
 
   $('#next').click(function() {
-    current_song_status = 'next'
-    current_song_db.child('status').set(current_song_status);
+    next();
   });
   
+  current_song_db.child('data').child('song_id').on('value', function(snapshot) {
+    var snap = snapshot.val();
+    if (typeof song_list !== 'undefined') {
+      next();
+    }
+  });
+
   current_song_db.on('value', function(snapshot) {
     // Style current song.
     var snap = snapshot.val();
-    var song_changed = false;
     if (typeof snapshot.val() !== 'undefined' && snapshot.val() != null) {
       current_song_data = snap.data;
       current_song_meta = snap.meta;
@@ -110,6 +118,12 @@ $(document).ready(function() {
 
     if (typeof current_song_data !== 'undefined' && current_song_data != null &&
         typeof current_song_meta !== 'undefined' && current_song_meta != null) {
+
+      if ($('#player').attr('src') == '') {
+        stream_song(current_song_meta.SongID, current_song_meta.AlbumID);
+      } else if (current_song_data.song_id != current_song_meta.SongID) {
+        stream_song(current_song_meta.SongID, current_song_meta.AlbumID);
+      }
 
       $('#sidebar-cover-art').attr('src', current_song_data.cover_art_url);
       $('#sidebar-song-title').text(current_song_meta.SongName);
@@ -127,16 +141,12 @@ $(document).ready(function() {
         if (audio_player.paused) {
           audio_player.play();
         }
-      } else if (current_song_status == 'pause') {
+      } else {
         $('#play-pause').find('i').removeClass('icon-pause').addClass('icon-play');
 
         if (!audio_player.paused) {
           audio_player.pause();
         }
-      } else {
-        next();
-        current_song_status = 'play';
-        current_song_db.child('status').set(current_song_status);
       }
 
     } else {

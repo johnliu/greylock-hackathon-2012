@@ -120,7 +120,6 @@ def get_album_art(session_id, album_id):
   Returns album art URL.
   """
   r = get_albums_info(session_id, [album_id])
-  print r
   if r.get('albums') and r['albums'][0]['CoverArtFilename'] is not None:
     return "http://images.grooveshark.com/static/albums/90_" + r['albums'][0]['CoverArtFilename']
   else:
