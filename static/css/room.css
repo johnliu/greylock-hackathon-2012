@@ -4,19 +4,6 @@
  *
  */
 
-.radio-button {
-  position: fixed;
-  bottom: 0;
-  left: 455px;
-  z-index: 500;
-}
-
-.export-button {
-  position: fixed;
-  top:0;
-  left: 0;
-  z-index: 100;
-}
 .search-result-table tr {
   background-color: white;
 }
@@ -26,6 +13,21 @@
   top: -25px;
   font-size: 14px;
   color: #999;
+}
+
+.banner span {
+  margin-left: 50px;
+  font-weight: lighter;
+  font-size: 5px;
+  color: #666;
+  text-transform: capitalize;
+}
+
+.banner span img {
+  position: relative;
+  margin-left: 3px;
+  bottom: 4px;
+  height: 16px;
 }
 
 .background {
@@ -79,6 +81,7 @@
   height: 100%;
   color: #F2F2F2;
   box-shadow: 2px 2px 3px #888;
+  z-index: 100000;
 }
 
 .row-fluid > .span-fixed-sidebar {
@@ -308,7 +311,7 @@ a.accordion-toggle:hover {
 
 .login .accordion-group {
   position: absolute;
-  top: 10px;
+  top: 12px;
   right: 10px;
   width: 130px;
   border: none;

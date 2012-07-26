@@ -15,12 +15,13 @@ h1.bling-beats {
   font-size: 100px;
   text-align: center;
   text-shadow: #222 4px 4px 2px;
+  margin-bottom: 40px;
 }
 
 .centered-container{
   position: absolute;
   top: 35%;
-  left: 45%;
+  left: 43%;
   width: 360px;
   height: 120px;
   margin-top: -60px;
@@ -30,9 +31,26 @@ h1.bling-beats {
   padding-bottom: 90px;
 }
 
+
+.powered-by {
+  text-align: right;
+  margin-bottom: 8px;
+}
+
+.powered-by span {
+  color: #F2F2F2;
+  font-size: 9px;
+}
+
+.powered-by span img {
+  position: relative;
+  bottom: 5px;
+  margin-left: 3px;
+  height: 20px;
+}
+
 #name-form label {
-  margin-top: 40px;
-  color: #666;
+  color: #999;
 }
 
 #name-form .input-large {
@@ -44,6 +62,7 @@ h1.bling-beats {
   padding-left: 25px;
   width: 100%;
 }
+
 
 .input-container input {
   float: left;
