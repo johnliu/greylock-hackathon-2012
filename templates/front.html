@@ -12,15 +12,20 @@
 <div class="centered-container">
   <div class="container-border">
     <h1 class="bling-beats">Bling Beats</h1>
-    <form id="name-form" method="post" class="">
-      <div class="input-container">
-        <label>
-          <h4>Create or join a music room</h4>
-        </label>
-        <input id="name" name="name" type="text" class="input-large" placeholder="Enter room name">
-        <button id="name-form-submit" type="submit" class="btn btn-large btn-primary">Party!</button>
-      </div>
-    </form>
+    <div class="powered-by">
+      <span>Powered By <img src="{{ url_for('static', filename='img/grooveshark_logo_white.png')}}"/></span>
+    </div>
+    <div class="input-area">
+      <form id="name-form" method="post" class="">
+        <div class="input-container">
+          <label>
+            <h4>Create or join a music room</h4>
+          </label>
+          <input id="name" name="name" type="text" class="input-large" placeholder="Enter room name">
+          <button id="name-form-submit" type="submit" class="btn btn-large btn-primary">Party!</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}
